@@ -160,14 +160,15 @@
 <style type="text/css">
 /* Set the size of the div element that contains the map */
 #map {
-	height: 800px; /* The height is 400 pixels */
+	margin-top: -5%;
+	height: 900px; /* The height is 400 pixels */
 	width: 100%; /* The width is the width of the web page */
 	margin-bottom: 10%;
 }
 </style>
 <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
-<link rel="stylesheet" href="resources/css/home/new.css">
-<link rel="stylesheet" href="resources/css/home/menu.css">
+<link rel="stylesheet" href="resources/css/home/home.css">
+<link rel="stylesheet" href="resources/css/home/navCircle.css">
 <link rel="stylesheet" type="text/css"
 	href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css"
 	rel="stylesheet">
@@ -178,42 +179,41 @@
 
 
 
-
 	<!--  -->
 
 	<div id="navCircle" style="position: relative; z-index: 2;">
-		<nav class="menu">
-			<input type="checkbox" href="#" class="menu-open" name="menu-open"
-				id="menu-open" /> <label class="menu-open-button" for="menu-open">
+		<nav class="navCircle">
+			<input type="checkbox" href="#" class="navCircle-open" name="navCircle-open"
+				id="navCircle-open" /> <label class="navCircle-open-button" for="navCircle-open">
 				<span class="lines line-1"></span> <span class="lines line-2"></span>
 				<span class="lines line-3"></span>
-			</label> <a href="#" class="menu-item blue"> <i class="fa fa-anchor"></i>
-			</a> <a href="#" class="menu-item green"> <i class="fa fa-coffee"></i>
-			</a> <a href="#" class="menu-item red"> <i class="fa fa-heart"></i>
-			</a> <a href="#" class="menu-item purple"> <i
+			</label> <a href="rec.main.go" class="navCircle-item blue"> <i class="fa fa-anchor"></i>
+			</a> <a href="myPage.main.go" class="navCircle-item green"> <i class="fa fa-coffee"></i>
+			</a> <a href="#" class="navCircle-item red"> <i class="fa fa-heart"></i>
+			</a> <a href="event.main.go" class="navCircle-item purple"> <i
 				class="fa fa-microphone"></i>
-			</a> <a href="#" class="menu-item orange"> <i class="fa fa-star"></i>
-			</a> <a href="#" class="menu-item lightblue"> <i
+			</a> <a href="#" class="navCircle-item orange"> <i class="fa fa-star"></i>
+			</a> <a href="#" class="navCircle-item lightblue"> <i
 				class="fa fa-diamond"></i>
 			</a>
 		</nav>
 	</div>
-
+<div class="inline-block sticky" style="z-index: 3;">
 	<div id="header">
 		<nav class="flex-nav">
 			<div class="container">
 				<div class="grid">
-					<div class="column-xs-9 column-md-8">
-						<a id="logo" href="index.go"> Miracle<span id="highlight">.</span>
+					<div class="column-xs-3 column-md-3">
+						<a id="logo" href="index.go">Miracle<span id="highlight">.</span>
 						</a>
 					</div>
-					<div class="column-xs-3 column-md-4">
-						<a href="#" class="toggle-nav">Menu <i
+					<div class="column-xs-9 column-md-9">
+						<a href="#" class="toggle-nav">menu<i
 							class="ion-navicon-round"></i></a>
-						<ul>
+						<ul style="background-color:transparent;">
 							<li><a href="rec.main.go">코스추천(준우공간)</a></li>
 							<li><a href="myPage.main.go">마이페이지(권공간)</a></li>
-							<li><jsp:include page="${loginPage }"></jsp:include></li>
+							<li><a><jsp:include page="${loginPage }"></jsp:include></a></li>
 							<li><a href="event.main.go">이벤트페이지(태형공간)</a></li>
 						</ul>
 
@@ -222,7 +222,7 @@
 			</div>
 		</nav>
 	</div>
-
+</div>
 
 	<div id="siteContentArea">
 		<div>
