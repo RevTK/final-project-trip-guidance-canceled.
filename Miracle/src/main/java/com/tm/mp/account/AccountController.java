@@ -13,14 +13,14 @@ public class AccountController {
 	@Autowired
 	private AccountDAO aDAO;
 	
-	@RequestMapping(value = "/regAccount.go", method = RequestMethod.GET)
-	public String regAccountGo(HttpServletRequest req) {
+	@RequestMapping(value = "/account.reg.go", method = RequestMethod.GET)
+	public String accountRegGo(HttpServletRequest req) {
 		return "account/accountReg";
 	}
 	
-	@RequestMapping(value = "/regAccount.do", method = RequestMethod.GET)
-	public String regAccountDo(AccountDTO a, HttpServletRequest req) {
-		aDAO.regAccount(req);
+	@RequestMapping(value = "/account.reg.do", method = RequestMethod.GET)
+	public String accountRegDo(AccountDTO a, HttpServletRequest req) {
+		aDAO.accountRegDo(req);
 		return "home";
 	}
 }

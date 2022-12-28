@@ -1,5 +1,10 @@
 Manifest-Version: 1.0
+<<<<<<< HEAD
 Built-By: jerot
 Build-Jdk: 14
+=======
+Built-By: kamir
+Build-Jdk: 11.0.17
+>>>>>>> 6136d04a094e3252a3c1a7eaded412399cb06d8d
 Created-By: Maven Integration for Eclipse
 
