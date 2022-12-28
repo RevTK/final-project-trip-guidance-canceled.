@@ -25,7 +25,7 @@ public class AccountDAO {
 
 	}
 
-	public void regAccount(HttpServletRequest req) {
+	public void accountRegDo(HttpServletRequest req) {
 		String path = req.getSession().getServletContext().getRealPath("resources/files");
 		MultipartRequest mr = null;
 		String a_id = mr.getParameter("a_id");
