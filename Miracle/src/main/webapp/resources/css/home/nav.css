@@ -563,11 +563,11 @@ body {
 }
 
 a {
-  color: #ffffff;
+  color: #0080ff;
   text-decoration: none;
 }
 a:hover {
-  color: #0080ff;
+  color: #ffffff;
 }
 
 nav {
