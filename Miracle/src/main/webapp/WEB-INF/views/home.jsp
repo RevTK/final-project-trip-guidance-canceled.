@@ -10,7 +10,7 @@
 <body>
 ${result }
 <h1>어서오세요</h1>
-<a href="account/regAccount.go">회원 가입</a>
+<a href="regAccount.go">회원 가입</a>
 <div id="siteContentArea">
 			<div>
 				<div align="center"><jsp:include page="${contentPage }"></jsp:include></div>

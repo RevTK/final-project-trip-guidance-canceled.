@@ -1,4 +1,4 @@
-package com.miracle.mp.account;
+package com.tm.mp.account;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -13,15 +13,14 @@ public class AccountController {
 	@Autowired
 	private AccountDAO aDAO;
 	
-	@RequestMapping(value = "/account.regAccount.go", method = RequestMethod.GET)
+	@RequestMapping(value = "/regAccount.go", method = RequestMethod.GET)
 	public String regAccountGo(HttpServletRequest req) {
-		aDAO.loginCheck(req);
-		req.setAttribute("contentPage", "account/reg.jsp");
-		return "home";
+		return "account/accountReg";
 	}
 	
-	@RequestMapping(value = "/account.regAccount.do", method = RequestMethod.GET)
-	public String regAccountDo() {
+	@RequestMapping(value = "/regAccount.do", method = RequestMethod.GET)
+	public String regAccountDo(AccountDTO a, HttpServletRequest req) {
+		aDAO.regAccount(req);
 		return "home";
 	}
 }

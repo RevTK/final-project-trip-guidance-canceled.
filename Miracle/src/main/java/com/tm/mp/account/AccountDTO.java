@@ -1,4 +1,4 @@
-package com.miracle.mp.account;
+package com.tm.mp.account;
 
 public class AccountDTO {
 	private String a_id;

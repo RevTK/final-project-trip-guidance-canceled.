@@ -16,7 +16,6 @@
 <div class="pw1">PW</div>
 <div class="pw2"><input id="pwInput" name="a_pw"></div>
 <div class="pw1">PW</div>
-<div class="pw2"><input id="pwInput" name="a_pw"></div>
 <div class="name1">이름</div>
 <div class="name2"><input id="nameInput" name="a_name"></div>
 <div class="addr1">주소</div>
