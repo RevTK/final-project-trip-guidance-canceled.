@@ -7,9 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<header>
-  <div><h1>Miracle</h1></div>
-</header>
 <section class="first">
   <div class="outer">
     <div class="inner">

@@ -10,9 +10,9 @@
 <script src="https://assets.codepen.io/16327/Observer.min.js"></script>
 <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/16327/SplitText3.min.js"></script>
 <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
-<script src="resources/js/navCircle.js"></script>
+<script src="resources/js/nav.js"></script>
 <link rel="stylesheet" href="resources/css/home/home.css">
-<link rel="stylesheet" href="resources/css/home/navCircle.css">
+<link rel="stylesheet" href="resources/css/home/nav.css">
 <link rel="stylesheet" type="text/css" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
 <link rel="stylesheet" href="resources/css/account/account.css">
 </head>
@@ -20,35 +20,21 @@
 
 
 
-
 	<!--  -->
 
-	<div id="navCircle" style="position: relative; z-index: 2;">
-		<nav class="navCircle">
-			<input type="checkbox" href="#" class="navCircle-open" name="navCircle-open"
-				id="navCircle-open" /> <label class="navCircle-open-button" for="navCircle-open">
-				<span class="lines line-1"></span> <span class="lines line-2"></span>
-				<span class="lines line-3"></span>
-			</label> <a href="rec.main.go" class="navCircle-item blue"> <i class="fa fa-anchor"></i>
-			</a> <a href="myPage.main.go" class="navCircle-item green"> <i class="fa fa-coffee"></i>
-			</a> <a href="#" class="navCircle-item red"> <i class="fa fa-heart"></i>
-			</a> <a href="event.main.go" class="navCircle-item purple"> <i
-				class="fa fa-microphone"></i>
-			</a> <a href="#" class="navCircle-item orange"> <i class="fa fa-star"></i>
-			</a> <a href="#" class="navCircle-item lightblue"> <i
-				class="fa fa-diamond"></i>
-			</a>
-		</nav>
-	</div>
+
+	
 <div class="inline-block sticky" style="z-index: 3;">
 	<div id="header">
 		<nav class="flex-nav">
 			<div class="container">
 				<div class="grid">
 					<div class="column-xs-3 column-md-3">
+						<a id="logo" href="index.go">Miracle<span id="highlight">.</span>
+						</a>
 					</div>
 					<div class="column-xs-9 column-md-9">
-						<a href="#" class="toggle-nav">메뉴<i
+						<a href="#" class="toggle-nav">menu<i
 							class="ion-navicon-round"></i></a>
 						<ul style="background-color:transparent;">
 							<li><a href="rec.main.go">코스추천(준우공간)</a></li>
