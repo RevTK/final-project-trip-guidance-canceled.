@@ -1,14 +1,25 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page session="false" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
 <html>
 <head>
-	<title>Home</title>
+<meta charset="UTF-8">
+<title>Miracle</title>
+<link rel="stylesheet" href="resources/css/account.css">
 </head>
 <body>
-<h1>
-	Hello world!  
-</h1>
-
-<P>  The time on the server is ${serverTime}. </P>
+${result }
+<h1>어서오세요</h1>
+<a href="account/regAccount.go">회원 가입</a>
+<div id="siteContentArea">
+			<div>
+				<div align="center"><jsp:include page="${contentPage }"></jsp:include></div>
+			</div>
+		</div>
+		<div id="siteLoginArea">
+			<div>
+				<div><jsp:include page="${loginPage }"></jsp:include></div>
+			</div>
+		</div>
 </body>
 </html>
