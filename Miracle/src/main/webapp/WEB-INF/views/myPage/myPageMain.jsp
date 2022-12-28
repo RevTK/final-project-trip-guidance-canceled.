@@ -8,5 +8,15 @@
 </head>
 <body>
 <h1>마이페이지 메인</h1>
+
+<form action="">
+	<div>
+		<div>ID</div>
+		<div>PW</div>
+		<div>주소</div>
+		<div>주소</div>
+	</div>
+</form>
+
 </body>
 </html>
