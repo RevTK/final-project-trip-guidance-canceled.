@@ -5,9 +5,13 @@
 <head>
 <meta charset="UTF-8">
 <title>Miracle</title>
+
+<!-- CDN CSS 불러오기 -->
 <link rel="stylesheet" type="text/css"
 	href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css"
 	rel="stylesheet">
+
+<!-- CDN JS 불러오기 -->
 <script src="https://code.jquery.com/jquery-3.6.3.js"
 	integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM="
 	crossorigin="anonymous"></script>
@@ -16,14 +20,23 @@
 <script
 	src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/16327/SplitText3.min.js"></script>
 <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
-<link rel="stylesheet" href="resources/css/home/home.css">
+<script src="https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.3.3/gsap.min.js"></script>
+
+<!-- css연결  -->
+<link rel="stylesheet" href="resources/css/index.css">
 <link rel="stylesheet" href="resources/css/home/nav.css">
 <link rel="stylesheet" href="resources/css/account/account.css">
-<script src="resources/js/nav.js"></script>
+<link rel="stylesheet" href="resources/css/event/eventMain.css">
+
+<!-- js연결 -->
+<script src="resources/js/home/nav.js"></script>
+
 </head>
+
 <body>
-	<div class="inline-block sticky" style="z-index: 3;">
-		<div id="header">
+	<div id="header">
+		<div class="inline-block sticky" style="z-index: 3;">
 			<nav class="flex-nav">
 				<div class="container">
 					<div class="grid">
@@ -55,6 +68,10 @@
 
 	<hr>
 	<div id="footer">footer</div>
-	
+
+<!-- js연결 -->
+	<script src="resources/js/home/home.js"></script>
+	<script src="resources/js/event/eventMain.js"></script>
+
 </body>
 </html>

@@ -6,6 +6,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
+
 <body>
 	<section class="first">
 		<div class="outer">
@@ -52,6 +53,6 @@
 			</div>
 		</div>
 	</section>
-	<script src="resources/js/home.js"></script>
+
 </body>
 </html>
