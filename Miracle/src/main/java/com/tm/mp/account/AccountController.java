@@ -18,10 +18,10 @@ public class AccountController {
 		return "account/accountReg";
 	}
 
-	@RequestMapping(value = "/account.reg.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/account.reg.do", method = RequestMethod.POST)
 	public String accountRegDo(AccountDTO a, HttpServletRequest req) {
-		aDAO.accountRegDo(req);
-		return "home";
+		aDAO.accountRegDo(a, req);
+		return "index";
 	}
 
 	@RequestMapping(value = "/account.login.do", method = RequestMethod.POST)

@@ -9,17 +9,17 @@
 <body>
 	<div id="loginSuccessArea">
 		<div>
-			<div style="height: 20px;">
+			<div style="height: 70px;">
 				<img src="resources/files/${sessionScope.loginAccount.ac_pic }">
 			</div>
-			<div>${sessionScope.loginAccount.ac_id }</div>
+			<div style="height: 20px;">${sessionScope.loginAccount.ac_id }</div>
 		</div>
 		<div>
-			<div>(${sessionScope.loginAccount.ac_name })</div>
+			<div>${sessionScope.loginAccount.ac_name }님 어서오세요</div>
 		</div>
 		<div>
 			<div>
-				<button onclick="goMemberInfo()">내 정보</button>
+				<button onclick="goAccountInfo()">내 정보</button>
 				<button onclick="logout()">로그아웃</button>
 			</div>
 		</div>

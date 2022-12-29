@@ -4,5 +4,8 @@
 <select id="getAccountByID" resultType="com.tm.mp.account.AccountDTO">
 		select * from account
 		where ac_id = #{ac_id}
-	</select>
+</select>
+<insert id="regAccount" parameterType="com.tm.mp.account.AccountDTO">
+insert into account values(#{ac_id},#{ac_pw},#{ac_name},#{ac_addr},#{ac_like},#{ac_pic})
+</insert>
 </mapper>

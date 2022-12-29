@@ -4,4 +4,6 @@ public interface AccountMapper {
 
 	AccountDTO getAccountByID(AccountDTO a);
 
+	int regAccount(AccountDTO a);
+
 }
