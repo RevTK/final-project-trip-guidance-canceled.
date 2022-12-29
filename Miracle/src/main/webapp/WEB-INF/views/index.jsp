@@ -42,6 +42,7 @@
 							<br><br><br>
 <div>
 <a href="rec.main.go">코스추천(준우공간)&nbsp;&nbsp;&nbsp;</a>
+<a href="rec.kakao.go">카카오맵(준우공간2)&nbsp;&nbsp;&nbsp;</a>
 <a href="myPage.main.go">마이페이지(권공간)&nbsp;&nbsp;&nbsp;</a>
 <a><jsp:include page="${loginPage }"></jsp:include>&nbsp;&nbsp;&nbsp;</a>
 <a href="event.main.go">이벤트페이지(태형공간)&nbsp;&nbsp;&nbsp;</a>

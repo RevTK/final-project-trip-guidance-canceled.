@@ -29,22 +29,45 @@
 <script src="resources/js/rec/map.js"></script>
 </head>
 <body>
-    <div id="search-panel">
-        <input id="address" type="text" value="" />
-        <button id="submit" type="button" value="Geocode">지도 검색</button>
-    </div>
+    
     <div id="map">
     </div>
  
     <!-- Google Map API -->
     <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDCjGlvNyptuTaaOw4gAhWL_P4aeg0euVU&callback=initMap">
+    src="https://maps.googleapis.com/maps/api/js?key=(Key)&callback=initMap">
     </script>
+    
+    <div>
+<strong>Start: </strong>
+<select id="start" onchange="calcRoute();">
+  <option value="oklahoma city, ok">Oklahoma City</option>
+  <option value="amarillo, tx">Amarillo</option>
+  <option value="gallup, nm">Gallup, NM</option>
+  <option value="flagstaff, az">Flagstaff, AZ</option>
+  <option value="winona, az">Winona</option>
+  <option value="kingman, az">Kingman</option>
+  <option value="barstow, ca">Barstow</option>
+  <option value="san bernardino, ca">San Bernardino</option>
+  <option value="los angeles, ca">Los Angeles</option>
+</select>
+<strong>End: </strong>
+<select id="end" onchange="calcRoute();">
+  <option value="oklahoma city, ok">Oklahoma City</option>
+  <option value="amarillo, tx">Amarillo</option>
+  <option value="gallup, nm">Gallup, NM</option>
+  <option value="flagstaff, az">Flagstaff, AZ</option>
+  <option value="winona, az">Winona</option>
+  <option value="kingman, az">Kingman</option>
+  <option value="barstow, ca">Barstow</option>
+  <option value="san bernardino, ca">San Bernardino</option>
+  <option value="los angeles, ca">Los Angeles</option>
+</select>
+</div>
     
 <script type="text/javascript">
 //Initialize and add the map
 function initMap() {
-	console.log('Map is initialized.');
 	 
     /**
      * 맵을 설정한다.
@@ -55,9 +78,12 @@ function initMap() {
      *              ㄴ lat : 위도 (latitude)
      *              ㄴ lng : 경도 (longitude)
      */
-     var myLatlng = new google.maps.LatLng(37.541,126.986);
+     const directionsService = new google.maps.DirectionsService();
+     const directionsRenderer = new google.maps.DirectionsRenderer();
      
-     var myOptions = new google.maps.Map(document.getElementById('map'), {
+     const myLatlng = new google.maps.LatLng(37.541,126.986);
+     
+     const map = new google.maps.Map(document.getElementById('map'), {
          zoom: 7,
          center: myLatlng,
          mapTypeId: google.maps.MapTypeId.ROADMAP,
@@ -186,93 +212,69 @@ function initMap() {
         	    }
         	]
      });
+
+     map.addListener("click", (e) => {
+    	    placeMarkerAndPanTo(e.latLng, map);
+    	  });
      
-     
-
-   //마커 이미지
-     var customicon = 'http://drive.google.com/uc?export=view&id=1tZgPtboj4mwBYT6cZlcY36kYaQDR2bRM'
-    		 
-   //인포윈도우
-     var infowindow = new google.maps.InfoWindow();
-   
-   
-   
-     /**
-      * Google Geocoding. Google Map API에 포함되어 있다.
-      */
-     var geocoder = new google.maps.Geocoder();
-
-     // submit 버튼 클릭 이벤트 실행
-     document.getElementById('submit').addEventListener('click', function() {
-         console.log('submit 버튼 클릭 이벤트 실행');
-
-         // 여기서 실행
-         geocodeAddress(geocoder, map);
+  // Create the initial InfoWindow.
+     let infoWindow = new google.maps.InfoWindow({
+       content: "Click the map to get Lat/Lng!",
+       position: myLatlng,
      });
 
-     /**
-      * geocodeAddress
-      * 
-      * 입력한 주소로 맵의 좌표를 바꾼다.
-      */
-  	
-
-     function geocodeAddress(geocoder, resultMap) {
-         console.log('geocodeAddress 함수 실행');
-
-         // 주소 설정
-         var address = document.getElementById('address').value;
-
-         /**
-          * 입력받은 주소로 좌표에 맵 마커를 찍는다.
-          * 1번째 파라미터 : 주소 등 여러가지. 
-          *      ㄴ 참고 : https://developers.google.com/maps/documentation/javascript/geocoding#GeocodingRequests
-          * 
-          * 2번째 파라미터의 함수
-          *      ㄴ result : 결과값
-          *      ㄴ status : 상태. OK가 나오면 정상.
-          */
-         geocoder.geocode({'address': address}, function(result, status) {
-             console.log(result);
-             console.log(status);
-
-             if (status === 'OK') {
-                 // 맵의 중심 좌표를 설정한다.
-                 resultMap.setCenter(result[0].geometry.location);
-                 // 맵의 확대 정도를 설정한다.
-                 resultMap.setZoom(6);
-                 // 맵 마커
-                 var marker = new google.maps.Marker({
-                     map: resultMap,
-                     position: result[0].geometry.location
-                 });
-
-                 // 위도
-                 console.log('위도(latitude) : ' + marker.position.lat());
-                 // 경도
-                 console.log('경도(longitude) : ' + marker.position.lng());
-             } else {
-                 alert('지오코드가 다음의 이유로 성공하지 못했습니다 : ' + status);
-             }
-         });
-     }
-     
-     map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
-     
-     google.maps.event.addListener(map, 'click', function(event) {
-       placeMarker(event.latLng);
+     infoWindow.open(map);
+     // Configure the click listener.
+     map.addListener("click", (mapsMouseEvent) => {
+       // Close the current InfoWindow.
+       infoWindow.close();
+       // Create a new InfoWindow.
+       infoWindow = new google.maps.InfoWindow({
+         position: mapsMouseEvent.latLng,
+       });
+       infoWindow.setContent(
+         JSON.stringify(mapsMouseEvent.latLng.toJSON(), null, 2)
+       );
+       infoWindow.open(map);
      });
-   }
      
-   function placeMarker(location) {
-     var marker = new google.maps.Marker({
-         position: location, 
-         map: map
-     });
+} 
+	function placeMarkerAndPanTo(latLng, map) {
+	  new google.maps.Marker({
+	    position: latLng,
+	    map: map,
+	  });
+	  map.panTo(latLng);
+	}
+     
+     directionsRenderer.setMap(map);
+     
+     const onChangeHandler = function () {
+    	    calculateAndDisplayRoute(directionsService, directionsRenderer);
+    	  };
 
-     map.setCenter(location);
- }
- 
+    	  
+    	  document.getElementById("start").addEventListener("change", onChangeHandler);
+    	  document.getElementById("end").addEventListener("change", onChangeHandler);
+    	
+    	
+function calculateAndDisplayRoute(directionsService, directionsRenderer) {
+	  directionsService
+	    .route({
+	      origin: {
+	        query: document.getElementById("start").value,
+	      },
+	      destination: {
+	        query: document.getElementById("end").value,
+	      },
+	      travelMode: google.maps.TravelMode.DRIVING,
+	    })
+	    .then((response) => {
+	      directionsRenderer.setDirections(response);
+	    })
+	    .catch((e) => window.alert("Directions request failed due to " + status));
+	}
+
 window.initMap = initMap;
 </script>
     
