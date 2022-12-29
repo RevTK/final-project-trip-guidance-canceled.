@@ -7,6 +7,16 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<a href="account.reg.go">회원가입하러가기</a>
+<div class="login-area">
+	<h1>로그인</h1>
+	<form class="login-form" action="account.login.do" method="post">
+	<input name="a_id" class="input_id" placeholder="아이디"> <p>
+	<input name="a_pw" type="password" class="input_pw" placeholder="비밀번호"> <p>
+	<div class="button_area">
+	<button>로그인</button>
+	</div>
+	<a href="account.reg.go">회원가입</a>
+</form>
+</div>
 </body>
 </html>

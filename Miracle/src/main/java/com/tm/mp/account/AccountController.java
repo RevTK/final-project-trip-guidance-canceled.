@@ -12,15 +12,21 @@ public class AccountController {
 
 	@Autowired
 	private AccountDAO aDAO;
-	
+
 	@RequestMapping(value = "/account.reg.go", method = RequestMethod.GET)
 	public String accountRegGo(HttpServletRequest req) {
 		return "account/accountReg";
 	}
-	
+
 	@RequestMapping(value = "/account.reg.do", method = RequestMethod.GET)
 	public String accountRegDo(AccountDTO a, HttpServletRequest req) {
 		aDAO.accountRegDo(req);
 		return "home";
+	}
+
+	@RequestMapping(value = "/account.login.do", method = RequestMethod.POST)
+	public String accountLoginDo(AccountDTO a, HttpServletRequest req) {
+		aDAO.accountLoginDo(a, req);
+		return "account/loginSuccess";
 	}
 }

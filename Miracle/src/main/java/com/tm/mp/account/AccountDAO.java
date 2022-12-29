@@ -37,4 +37,19 @@ public class AccountDAO {
 		}
 	}
 
+	public void accountLoginDo(AccountDTO a, HttpServletRequest req) {
+		AccountDTO dbAccount = ss.getMapper(AccountMapper.class).getAccountByID(a);
+
+		if (dbAccount != null) {
+			if (a.getA_pw().equals(dbAccount.getA_pw())) {
+				req.getSession().setAttribute("loginAccount", dbAccount);
+				req.getSession().setMaxInactiveInterval(60 * 10);
+			} else {
+				req.setAttribute("result", "비밀번호 오류");
+			}
+		} else {
+			req.setAttribute("result", "가입하지 않은 회원");
+		}
+
+	}
 }
