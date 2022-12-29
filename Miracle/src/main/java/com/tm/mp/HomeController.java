@@ -42,6 +42,7 @@ public class HomeController {
 		return "index";
 	}
 	
+	
 	@RequestMapping(value = "/myPage.main.go", method = RequestMethod.GET)
 	public String myPageMainGo(HttpServletRequest req) {
 		aDAO.loginCheck(req);
