@@ -13,6 +13,9 @@
   margin: 0;
   padding: 0;
 }
+a {
+	color: blue;
+}
 
 #eventMain {
   width: 100%;
@@ -24,12 +27,12 @@
   overflow: hidden;
 }
 
-button {
+#eventMain button {
   border: none;
   background: none;
   cursor: pointer;
 }
-button:focus {
+#eventMain button:focus {
   outline: none;
   border: none;
 }
