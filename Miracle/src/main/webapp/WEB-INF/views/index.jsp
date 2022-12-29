@@ -31,7 +31,9 @@
 
 <!-- js연결 -->
 <script src="resources/js/home/nav.js"></script>
-
+<script src="resources/js/account/check.js"></script>
+<script src="resources/js/account/go.js"></script>
+<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 </head>
 <body id="mainBody">
 <a id="logo" href="index.go">Miracle<span id="highlight">.</span>
