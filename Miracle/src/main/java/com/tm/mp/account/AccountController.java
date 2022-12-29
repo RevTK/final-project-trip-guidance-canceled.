@@ -27,6 +27,21 @@ public class AccountController {
 	@RequestMapping(value = "/account.login.do", method = RequestMethod.POST)
 	public String accountLoginDo(AccountDTO a, HttpServletRequest req) {
 		aDAO.accountLoginDo(a, req);
-		return "account/loginSuccess";
+		aDAO.loginCheck(req);
+		req.setAttribute("contentPage", "home.jsp");
+		return "index";
+	}
+	
+	@RequestMapping(value = "/account.logout.do", method = RequestMethod.GET)
+	public String accountLogoutDo(AccountDTO a, HttpServletRequest req) {
+		aDAO.accountLogoutDo(a, req);
+		aDAO.loginCheck(req);
+		req.setAttribute("contentPage", "home.jsp");
+		return "index";
+	}
+	
+	@RequestMapping(value = "/account.info", method = RequestMethod.GET)
+	public String accountInfo(AccountDTO a, HttpServletRequest req) {
+		return "index";
 	}
 }

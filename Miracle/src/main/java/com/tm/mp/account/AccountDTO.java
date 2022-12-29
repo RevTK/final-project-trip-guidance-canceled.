@@ -1,73 +1,73 @@
 package com.tm.mp.account;
 
 public class AccountDTO {
-	private String a_id;
-	private String a_pw;
-	private String a_name;
-	private String a_addr;
-	private String a_like;
-	private String a_pic;
+	private String ac_id;
+	private String ac_pw;
+	private String ac_name;
+	private String ac_addr;
+	private String ac_like;
+	private String ac_pic;
 	
 public AccountDTO() {
 	// TODO Auto-generated constructor stub
 }
 
-public AccountDTO(String a_id, String a_pw, String a_name, String a_addr, String a_like, String a_pic) {
+public AccountDTO(String ac_id, String ac_pw, String ac_name, String ac_addr, String ac_like, String ac_pic) {
 	super();
-	this.a_id = a_id;
-	this.a_pw = a_pw;
-	this.a_name = a_name;
-	this.a_addr = a_addr;
-	this.a_like = a_like;
-	this.a_pic = a_pic;
+	this.ac_id = ac_id;
+	this.ac_pw = ac_pw;
+	this.ac_name = ac_name;
+	this.ac_addr = ac_addr;
+	this.ac_like = ac_like;
+	this.ac_pic = ac_pic;
 }
 
-public String getA_id() {
-	return a_id;
+public String getAc_id() {
+	return ac_id;
 }
 
-public void setA_id(String a_id) {
-	this.a_id = a_id;
+public void setAc_id(String ac_id) {
+	this.ac_id = ac_id;
 }
 
-public String getA_pw() {
-	return a_pw;
+public String getAc_pw() {
+	return ac_pw;
 }
 
-public void setA_pw(String a_pw) {
-	this.a_pw = a_pw;
+public void setAc_pw(String ac_pw) {
+	this.ac_pw = ac_pw;
 }
 
-public String getA_name() {
-	return a_name;
+public String getAc_name() {
+	return ac_name;
 }
 
-public void setA_name(String a_name) {
-	this.a_name = a_name;
+public void setAc_name(String ac_name) {
+	this.ac_name = ac_name;
 }
 
-public String getA_addr() {
-	return a_addr;
+public String getAc_addr() {
+	return ac_addr;
 }
 
-public void setA_addr(String a_addr) {
-	this.a_addr = a_addr;
+public void setAc_addr(String ac_addr) {
+	this.ac_addr = ac_addr;
 }
 
-public String getA_like() {
-	return a_like;
+public String getAc_like() {
+	return ac_like;
 }
 
-public void setA_like(String a_like) {
-	this.a_like = a_like;
+public void setAc_like(String ac_like) {
+	this.ac_like = ac_like;
 }
 
-public String getA_pic() {
-	return a_pic;
+public String getAc_pic() {
+	return ac_pic;
 }
 
-public void setA_pic(String a_pic) {
-	this.a_pic = a_pic;
+public void setAc_pic(String ac_pic) {
+	this.ac_pic = ac_pic;
 }
 
 }

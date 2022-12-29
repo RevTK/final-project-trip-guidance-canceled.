@@ -3,6 +3,6 @@
 <mapper namespace="com.tm.mp.account.AccountMapper">
 <select id="getAccountByID" resultType="com.tm.mp.account.AccountDTO">
 		select * from account
-		where a_id = #{a_id}
+		where ac_id = #{ac_id}
 	</select>
 </mapper>

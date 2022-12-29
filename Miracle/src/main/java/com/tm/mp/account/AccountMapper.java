@@ -4,5 +4,4 @@ public interface AccountMapper {
 
 	AccountDTO getAccountByID(AccountDTO a);
 
-
 }

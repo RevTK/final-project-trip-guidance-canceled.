@@ -31,7 +31,8 @@
 
 <!-- js연결 -->
 <script src="resources/js/home/nav.js"></script>
-
+<script src="resources/js/account/check.js"></script>
+<script src="resources/js/account/go.js"></script>
 </head>
 
 <body>

@@ -9,13 +9,13 @@
 <body>
 	<div id="loginSuccessArea">
 		<div>
-			<div>
-				<img src="resources/files/${sessionScope.loginMember.a_pic }">
+			<div style="height: 20px;">
+				<img src="resources/files/${sessionScope.loginAccount.ac_pic }">
 			</div>
-			<div>${sessionScope.loginMember.a_id }</div>
+			<div>${sessionScope.loginAccount.ac_id }</div>
 		</div>
 		<div>
-			<div>(${sessionScope.loginMember.a_name })</div>
+			<div>(${sessionScope.loginAccount.ac_name })</div>
 		</div>
 		<div>
 			<div>
