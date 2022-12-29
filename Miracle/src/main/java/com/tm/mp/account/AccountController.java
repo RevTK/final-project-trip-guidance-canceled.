@@ -12,15 +12,36 @@ public class AccountController {
 
 	@Autowired
 	private AccountDAO aDAO;
-	
+
 	@RequestMapping(value = "/account.reg.go", method = RequestMethod.GET)
 	public String accountRegGo(HttpServletRequest req) {
 		return "account/accountReg";
 	}
-	
-	@RequestMapping(value = "/account.reg.do", method = RequestMethod.GET)
+
+	@RequestMapping(value = "/account.reg.do", method = RequestMethod.POST)
 	public String accountRegDo(AccountDTO a, HttpServletRequest req) {
-		aDAO.accountRegDo(req);
-		return "home";
+		aDAO.accountRegDo(a, req);
+		return "index";
+	}
+
+	@RequestMapping(value = "/account.login.do", method = RequestMethod.POST)
+	public String accountLoginDo(AccountDTO a, HttpServletRequest req) {
+		aDAO.accountLoginDo(a, req);
+		aDAO.loginCheck(req);
+		req.setAttribute("contentPage", "home.jsp");
+		return "index";
+	}
+	
+	@RequestMapping(value = "/account.logout.do", method = RequestMethod.GET)
+	public String accountLogoutDo(AccountDTO a, HttpServletRequest req) {
+		aDAO.accountLogoutDo(a, req);
+		aDAO.loginCheck(req);
+		req.setAttribute("contentPage", "home.jsp");
+		return "index";
+	}
+	
+	@RequestMapping(value = "/account.info", method = RequestMethod.GET)
+	public String accountInfo(AccountDTO a, HttpServletRequest req) {
+		return "index";
 	}
 }
