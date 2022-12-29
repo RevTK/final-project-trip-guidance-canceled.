@@ -34,41 +34,30 @@
 <script src="resources/js/account/check.js"></script>
 <script src="resources/js/account/go.js"></script>
 </head>
-
-<body>
-	<div id="header">
-		<div class="inline-block sticky" style="z-index: 3;">
-			<nav class="flex-nav">
-				<div class="container">
-					<div class="grid">
-						<div class="column-xs-3 column-md-3">
-							<a id="logo" href="index.go">Miracle<span id="highlight">.</span>
+<body id="mainBody">
+<a id="logo" href="index.go">Miracle<span id="highlight">.</span>
 							</a>
-						</div>
-						<div class="column-xs-9 column-md-9">
-							<a href="#" class="toggle-nav">menu<i
-								class="ion-navicon-round"></i></a>
-							<ul style="background-color: transparent;">
-								<li><a href="rec.main.go">코스추천(준우공간)</a></li>
-								<li><a href="myPage.main.go">마이페이지(권공간)</a></li>
-								<li><a><jsp:include page="${loginPage }"></jsp:include></a></li>
-								<li><a href="event.main.go">이벤트페이지(태형공간)</a></li>
-							</ul>
-						</div>
-					</div>
-				</div>
-			</nav>
-		</div>
-	</div>
-
+							
+							<br><br><br>
+<div>
+<a href="rec.main.go">코스추천(준우공간)&nbsp;&nbsp;&nbsp;</a>
+<a href="myPage.main.go">마이페이지(권공간)&nbsp;&nbsp;&nbsp;</a>
+<a><jsp:include page="${loginPage }"></jsp:include>&nbsp;&nbsp;&nbsp;</a>
+<a href="event.main.go">이벤트페이지(태형공간)&nbsp;&nbsp;&nbsp;</a>
+</div>
 	<div id="siteContentArea">
 		<div>
 			<div align="center"><jsp:include page="${contentPage }"></jsp:include></div>
 		</div>
 	</div>
-
+	
+	<div id="footer">
 	<hr>
-	<div id="footer">footer</div>
+	<div>내정보</div>
+	<div>보기</div>
+	<div>수정</div>
+	<div>내글</div>
+	</div>
 
 <!-- js연결 -->
 	<script src="resources/js/home/home.js"></script>
