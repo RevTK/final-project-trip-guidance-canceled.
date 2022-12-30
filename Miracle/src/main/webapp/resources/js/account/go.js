@@ -8,3 +8,5 @@ function logout() {
 function goAccountInfo() {
 		location.href='account.info';
 }
+
+

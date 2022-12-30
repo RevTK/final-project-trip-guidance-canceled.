@@ -4,6 +4,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -44,11 +45,18 @@ public class AccountController {
 		return "index";
 	}
 	
-	@RequestMapping(value = "/find.id.go", method = RequestMethod.GET)
-	public String FindIdGo(AccountDTO a, HttpServletRequest req) {
+	@RequestMapping(value = "/search.id.go", method = RequestMethod.GET)
+	public String searchIdGo(AccountDTO a, HttpServletRequest req, Model m) {
 		aDAO.loginCheck(req);
-		req.setAttribute("contentPage", "account/FindId.jsp");
-		return "index";
+		req.setAttribute("contentPage", "home.jsp");
+		return "/account/search_id";
+	}
+	
+	@RequestMapping(value = "/search.pw.go", method = RequestMethod.GET)
+	public String searchPwGo(AccountDTO a, HttpServletRequest req, Model m) {
+		aDAO.loginCheck(req);
+		req.setAttribute("contentPage", "home.jsp");
+		return "/account/search_pw";
 	}
 	
 	@RequestMapping(value = "/account.info", method = RequestMethod.GET)

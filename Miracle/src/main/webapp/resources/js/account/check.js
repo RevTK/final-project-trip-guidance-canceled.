@@ -1,50 +1,39 @@
-function loginCheck() {
-	let idInput = document.loginForm.idInput;
-	let pwInput = document.loginForm.pwInput;
-	
-	if (isEmpty(idInput)) {
-		alert('아이디를 입력해주세요');
-		idInput.focus();
+let path = "${pageContext.request.contextPath }";
+
+$(document).ready(function() {
+	let msg = "${msg}";
+	if (msg != "") {
+		alert(msg);
+	}
+});
+
+function fnSubmit() {
+
+	let email_rule = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
+
+	if ($("#me_name").val() == null || $("#me_name").val() == "") {
+		alert("이름을 입력해주세요.");
+		$("#me_name").focus();
+
 		return false;
 	}
-	if (isEmpty(pwInput)) {
-		alert('비밀번호를 입력해주세요');
-		pwInput.focus();
+
+	if ($("#me_email").val() == null || $("#me_email").val() == "") {
+		alert("이메일을 입력해주세요.");
+		$("#me_email").focus();
+
 		return false;
 	}
-	return true;
+
+	if (!email_rule.test($("#me_email").val())) {
+		alert("전화번호 형식에 맞게 입력해주세요.");
+		return false;
+	}
+
+	if (confirm("아이디를 찾으시겠습니까?")) {
+
+		$("#createForm").submit();
+
+		return false;
+	}
 }
-
-function idCheck() {
-	let name = document.findId.name;
-	let email = document.findId.email;
-
-	if (lessThan(name, 1)) {
-		alert('이름을 입력해주세요');
-		name.focus();
-		return false;
-	}
-
-	if (lessThan(email, 1)) {
-		alert('이메일을 입력해주세요');
-		email.focus();
-		return false;
-	}
-	
-	if(!checkEmail(email.value)){
-		alert('이메일 형식이 잘못되었습니다');
-		email.focus();
-		return false;
-	}
-
-	return true;
-}
-
-function selectAll(selectAll)  {
-	  const checkboxes 
-	       = document.getElementsById('like');
-	  
-	  checkboxes.forEach((checkbox) => {
-	    checkbox.checked = selectAll.checked;
-	  })
-	}
