@@ -15,12 +15,16 @@ public class AccountController {
 
 	@RequestMapping(value = "/account.reg.go", method = RequestMethod.GET)
 	public String accountRegGo(HttpServletRequest req) {
-		return "account/accountReg";
+		aDAO.loginCheck(req);
+		req.setAttribute("contentPage", "account/accountReg.jsp");
+		return "index";
 	}
 
 	@RequestMapping(value = "/account.reg.do", method = RequestMethod.POST)
 	public String accountRegDo(AccountDTO a, HttpServletRequest req) {
 		aDAO.accountRegDo(a, req);
+		aDAO.loginCheck(req);
+		req.setAttribute("contentPage", "home.jsp");
 		return "index";
 	}
 
@@ -37,6 +41,13 @@ public class AccountController {
 		aDAO.accountLogoutDo(a, req);
 		aDAO.loginCheck(req);
 		req.setAttribute("contentPage", "home.jsp");
+		return "index";
+	}
+	
+	@RequestMapping(value = "/find.id.go", method = RequestMethod.GET)
+	public String FindIdGo(AccountDTO a, HttpServletRequest req) {
+		aDAO.loginCheck(req);
+		req.setAttribute("contentPage", "account/FindId.jsp");
 		return "index";
 	}
 	

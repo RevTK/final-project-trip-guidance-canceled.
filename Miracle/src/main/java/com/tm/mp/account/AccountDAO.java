@@ -1,5 +1,7 @@
 package com.tm.mp.account;
 
+import java.io.UnsupportedEncodingException;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.ibatis.session.SqlSession;
@@ -30,27 +32,27 @@ public class AccountDAO {
 		MultipartRequest mr = null;
 		try {
 			mr = new MultipartRequest(req, path, 10 * 1024 * 1024, "utf-8", new DefaultFileRenamePolicy());
-			
+
 			String ac_id = mr.getParameter("ac_id");
 			String ac_pw = mr.getParameter("ac_pw");
 			String ac_name = mr.getParameter("ac_name");
 			String ac_addr = mr.getParameter("ac_addr");
-			String ac_like = mr.getParameter("ac_like");
+			String ac_email = mr.getParameter("ac_email");
 			String ac_pic = mr.getFilesystemName("ac_pic");
 
 			a.setAc_id(ac_id);
 			a.setAc_pw(ac_pw);
 			a.setAc_name(ac_name);
 			a.setAc_addr(ac_addr);
-			a.setAc_like(ac_like);
+			a.setAc_email(ac_email);
 			a.setAc_pic(ac_pic);
-			
+
 			if (ss.getMapper(AccountMapper.class).regAccount(a) == 1) {
 				req.setAttribute("result", "가입성공");
 			} else {
 				req.setAttribute("result", "가입실패");
 			}
-			
+
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

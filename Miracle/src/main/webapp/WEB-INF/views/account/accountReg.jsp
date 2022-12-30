@@ -31,17 +31,11 @@
 			</div>
 			<div class="addr">주소</div>
 			<div>
-			<span id="addrSearchBtn">검색</span>
 			<input id="addrInput" name="ac_addr">
 			</div>
-			<div class="like">좋아하는 관광지</div>
+			<div class="email">이메일</div>
 			<div>
-			전체<input type="checkbox" id="like" name="ac_like" onclick="selectAll(this);">
-			유럽<input type="checkbox" id="like" name="ac_like" value="europe">
-			아시아<input type="checkbox" id="like" name="ac_like" value="asia">
-			아메리카<input type="checkbox" id="like" name="ac_like" value="america">
-			오세아니아<input type="checkbox" id="like" name="ac_like" value="oceania">
-			아프리카<input type="checkbox" id="like" name="ac_like" value="africa">
+			<input id="" name="ac_email">
 			</div>
 			<div class="pic1">사진</div>
 			<div class="pic2">
