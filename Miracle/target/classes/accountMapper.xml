@@ -6,6 +6,6 @@
 		where ac_id = #{ac_id}
 </select>
 <insert id="regAccount" parameterType="com.tm.mp.account.AccountDTO">
-insert into account values(#{ac_id},#{ac_pw},#{ac_name},#{ac_addr},#{ac_like},#{ac_pic})
+insert into account values(#{ac_id},#{ac_pw},#{ac_name},#{ac_addr},#{ac_email},#{ac_pic})
 </insert>
 </mapper>

@@ -5,20 +5,20 @@ public class AccountDTO {
 	private String ac_pw;
 	private String ac_name;
 	private String ac_addr;
-	private String ac_like;
+	private String ac_email;
 	private String ac_pic;
 	
 public AccountDTO() {
 	// TODO Auto-generated constructor stub
 }
 
-public AccountDTO(String ac_id, String ac_pw, String ac_name, String ac_addr, String ac_like, String ac_pic) {
+public AccountDTO(String ac_id, String ac_pw, String ac_name, String ac_addr, String ac_email, String ac_pic) {
 	super();
 	this.ac_id = ac_id;
 	this.ac_pw = ac_pw;
 	this.ac_name = ac_name;
 	this.ac_addr = ac_addr;
-	this.ac_like = ac_like;
+	this.ac_email = ac_email;
 	this.ac_pic = ac_pic;
 }
 
@@ -54,12 +54,12 @@ public void setAc_addr(String ac_addr) {
 	this.ac_addr = ac_addr;
 }
 
-public String getAc_like() {
-	return ac_like;
+public String getAc_email() {
+	return ac_email;
 }
 
-public void setAc_like(String ac_like) {
-	this.ac_like = ac_like;
+public void setAc_email(String ac_email) {
+	this.ac_email = ac_email;
 }
 
 public String getAc_pic() {
