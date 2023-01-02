@@ -34,7 +34,8 @@ pageEncoding="UTF-8"%>
 
     <!-- GSAP -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
-
+	
+	<!-- 우편 번호 검색하는 기능 -->
     <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 
     <!-- ---------------------------------------------------------------------------- -->
@@ -48,6 +49,7 @@ pageEncoding="UTF-8"%>
     <script src="resources/js/home/nav.js"></script>
     <script src="resources/js/account/check.js"></script>
     <script src="resources/js/account/go.js"></script>
+    <script src="resources/js/account/jquery.js"></script>
 
     <!-- ---------------------------------------------------------------------------- -->
   </head>

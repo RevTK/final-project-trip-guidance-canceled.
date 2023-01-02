@@ -4,24 +4,29 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>아이디 찾기</title>
 </head>
 <body>
-<form action="${path}/account/search_result_id" method="post">
-	<div>
-		<input id="me_name" name="me_name" placeholder="이름을 입력해주세요">
+	<div class="con">
+	<button onclick="makeTestData();">테스트 데이터 채우기</button>
 	</div>
+	<form name="searchIdForm" action="search.id.do" method="post">
+		<div>
+			<input id="ac_name" name="ac_name" placeholder="이름을 입력해주세요">
+		</div>
+		<div>
+			<input id="ac_email" name="ac_email" placeholder="이메일을 입력해주세요">
+		</div>
+		<div>
+		<button>아이디 찾기</button>
+		</div>
+	</form>
+		<div>
+			이미 회원이신가요?&nbsp;&nbsp;&nbsp;
+			<a href="account.login.go">로그인</a>
+		</div>
 	<div>
-		<input id="me_email" name="me_email" placeholder="이메일을 입력해주세요">
+		아직 회원이 아니신가요?&nbsp;&nbsp;&nbsp;<a href="account.reg.go">회원가입</a>
 	</div>
-	<a href="javascript:void(0)" onclick="fnSubmit(); return false;">아이디
-		찾기</a>
-	<div>
-		<a href="/account/accountReg">아직 회원이 아니신가요? 회원 가입</a>
-	</div>
-	<div>
-		<a href="/account/loginPage">이미 회원이신가요? 로그인</a>
-	</div>
-</form>
 </body>
 </html>

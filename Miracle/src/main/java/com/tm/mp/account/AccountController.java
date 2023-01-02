@@ -48,15 +48,29 @@ public class AccountController {
 	@RequestMapping(value = "/search.id.go", method = RequestMethod.GET)
 	public String searchIdGo(AccountDTO a, HttpServletRequest req, Model m) {
 		aDAO.loginCheck(req);
-		req.setAttribute("contentPage", "home.jsp");
-		return "/account/search_id";
+		req.setAttribute("contentPage", "account/search_id.jsp");
+		return "index";
+	}
+	
+	@RequestMapping(value = "/search.id.do", method = RequestMethod.POST)
+	public String searchIdDo(AccountDTO a, HttpServletRequest req, Model m) {
+		aDAO.loginCheck(req);
+		req.setAttribute("contentPage", "account/search_id.jsp");
+		return "index";
 	}
 	
 	@RequestMapping(value = "/search.pw.go", method = RequestMethod.GET)
 	public String searchPwGo(AccountDTO a, HttpServletRequest req, Model m) {
 		aDAO.loginCheck(req);
+		req.setAttribute("contentPage", "account/search_pw.jsp");
+		return "index";
+	}
+	
+	@RequestMapping(value = "/search.pw.do", method = RequestMethod.GET)
+	public String searchPwDo(AccountDTO a, HttpServletRequest req, Model m) {
+		aDAO.loginCheck(req);
 		req.setAttribute("contentPage", "home.jsp");
-		return "/account/search_pw";
+		return "index";
 	}
 	
 	@RequestMapping(value = "/account.info", method = RequestMethod.GET)

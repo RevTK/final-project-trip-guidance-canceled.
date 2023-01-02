@@ -1,39 +1,22 @@
-let path = "${pageContext.request.contextPath }";
+function makeTestData() {
+	let form = document.searchIdForm;
+	form.ac_name.value = 'test';
+	form.ac_email.value = 'test@gmail.com';
+}
 
-$(document).ready(function() {
-	let msg = "${msg}";
-	if (msg != "") {
-		alert(msg);
-	}
-});
-
-function fnSubmit() {
-
-	let email_rule = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
-
-	if ($("#me_name").val() == null || $("#me_name").val() == "") {
-		alert("이름을 입력해주세요.");
-		$("#me_name").focus();
-
+function searchIdForm() {
+	form.ac_name.value = form.ac_name.value.trim();
+	let nameInput = document.searchIdForm.ac_name;
+	let emailInput = document.searchIdForm.ac_email;
+	if (isEmpty(nameInput)) {
+		alert('이름을 입력해주세요.');
+		nameInput.focus();
 		return false;
 	}
-
-	if ($("#me_email").val() == null || $("#me_email").val() == "") {
-		alert("이메일을 입력해주세요.");
-		$("#me_email").focus();
-
-		return false;
-	}
-
-	if (!email_rule.test($("#me_email").val())) {
-		alert("전화번호 형식에 맞게 입력해주세요.");
-		return false;
-	}
-
-	if (confirm("아이디를 찾으시겠습니까?")) {
-
-		$("#createForm").submit();
-
+	form.ac_email.value = form.ac_email.value.trim();
+	if (isEmpty(emailInput)) {
+		alert('이메일을 입력해주세요.');
+		emailInput.focus();
 		return false;
 	}
 }
