@@ -7,6 +7,17 @@
 <title>Insert title here</title>
 </head>
 <body>
-	${sessionScope.loginAccount.ac_id }
+<br><br><br><br><br><br>
+	<div>
+		<button onclick="location.href='myPage.info.go'">내정보 보기</button> 
+	</div>
+	<div>
+		<button onclick="location.href='myPage.modify.go'">내정보 수정하기</button> 
+	</div>
+	<div>
+		<button onclick="location.href='myPage.mypost.go'">내글목록보기</button> 
+	</div>
+
+
 </body>
 </html>
