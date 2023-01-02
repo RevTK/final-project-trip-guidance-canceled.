@@ -66,7 +66,7 @@
 				<ul class="nav__list">
 					<li class="nav__item"><a href="index.go" class="nav__link">홈</a>
 						<!-- index5.go --></li>
-					<li class="nav__item"><a href="rec.main.go" class="nav__link">코스</a>
+					<li class="nav__item"><a href="rec.kakao.go" class="nav__link">코스</a>
 						<!-- rec5.main.go --></li>
 					<li class="nav__item"><a href="#" class="nav__link">트립리뷰</a> <!-- event5.main.go --></li>
 					<li class="nav__item"><a href="#" class="nav__link">커뮤니티</a> <!-- myPage5.main.go --></li>
