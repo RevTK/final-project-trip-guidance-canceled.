@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<a href="account.login.go">로그인하러가기(형규공간)</a>
+	<a href="account.login.go">loginGoGo</a>
 </body>
 </html>

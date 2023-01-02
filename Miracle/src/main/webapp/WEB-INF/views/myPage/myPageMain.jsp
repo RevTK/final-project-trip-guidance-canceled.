@@ -8,7 +8,7 @@
 </head>
 <body>
 	<div>
-		<button onclick="location.href='myPage.info.go?ac_id=${ac_id}'">내정보 보기</button> 
+		<button onclick="location.href='myPage.info.go'">내정보 보기</button> 
 	</div>
 	<div>
 		<button onclick="location.href='myPage.modify.go'">내정보 수정하기</button> 

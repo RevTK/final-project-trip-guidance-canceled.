@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.tm.mp.account.AccountDAO;
+import com.tm.mp.account.AccountDTO;
 
 @Controller
 public class MyPageController {
@@ -18,14 +19,13 @@ public class MyPageController {
 	@Autowired
 	private MyPageDAO mpDAO;
 	
-	@RequestMapping(value = "/myPage.info.go", method = RequestMethod.GET)
-	public String myPageInfoGo(HttpServletRequest req, AccountDAO a) {
-		
-		aDAO.loginCheck(req);
-		mpDAO.getAllMyPage(req,a);
-		
-		req.setAttribute("contentPage", "myPage/myPageInfo.jsp");
-		
+	
+	@RequestMapping(value = "myPage.info.go", method = RequestMethod.GET)
+	public String myPageInfoGo(HttpServletRequest req) {
+		 
+			aDAO.loginCheck(req);
+			req.setAttribute("contentPage", "myPage/myPageInfo.jsp");
+		 
 		return "index";
 	}
 	
@@ -39,6 +39,32 @@ public class MyPageController {
 		
 		return "index";
 	}
+	
+	@RequestMapping(value = "/myPage.modify.do", method = RequestMethod.POST)
+	public String myPageModifyDo(HttpServletRequest req) {
+		
+		aDAO.loginCheck(req);
+		mpDAO.myPageUpdate(req);
+		req.setAttribute("contentPage", "myPage/myPageInfo.jsp");
+		
+		return "index";
+	}
+	
+	
+	
+	@RequestMapping(value = "/myPage.delete.go", method = RequestMethod.POST)
+	public String myPageDeleteGo(HttpServletRequest req, AccountDTO ac) {
+		
+		aDAO.loginCheck(req);
+		
+		req.setAttribute("contentPage", "myPage/myPageModify.jsp");
+		
+		return "index";
+	}
+	
+	
+	
+	
 	
 	@RequestMapping(value = "/myPage.mypost.go", method = RequestMethod.GET)
 	public String myPageMyPostGo(HttpServletRequest req) {

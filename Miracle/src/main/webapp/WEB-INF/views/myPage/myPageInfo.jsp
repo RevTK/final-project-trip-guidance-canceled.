@@ -10,15 +10,13 @@
 <body>
 <h1>내정보 보기!</h1>
 
+	ID : ${sessionScope.loginAccount.ac_id } <br>
+	PW : ${sessionScope.loginAccount.ac_pw } <br>
+	NAME: ${sessionScope.loginAccount.ac_name } <br>
+	ADDR: ${sessionScope.loginAccount.ac_addr } <br>
+	EMAIL: ${sessionScope.loginAccount.ac_email } <br>
+	PIC : ${sessionScope.loginAccount.ac_pic } <br>
 
-<c:forEach items="${mypages }" var="m">
-	ID : ${m.ac_id } <br>
-	PW : ${m.ac_pw } <br>
-	NAME: ${m.ac_name } <br>
-	ADDR: ${m.ac_addr } <br>
-	EMAIL: ${m.ac_email } <br>
-	PIC : ${m.ac_pic } <br>
-</c:forEach>
 
 
 
