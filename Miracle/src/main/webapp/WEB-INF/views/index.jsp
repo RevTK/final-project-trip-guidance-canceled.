@@ -67,8 +67,8 @@
 						<!-- index5.go --></li>
 					<li class="nav__item"><a href="rec.main.go" class="nav__link">코스</a>
 						<!-- rec5.main.go --></li>
-					<li class="nav__item"><a href="#" class="nav__link">트립리뷰</a> <!-- event5.main.go --></li>
-					<li class="nav__item"><a href="#" class="nav__link">커뮤니티</a> <!-- myPage5.main.go --></li>
+					<li class="nav__item"><a href="#popular" class="nav__link">트립리뷰</a> <!-- event5.main.go --></li>
+					<li class="nav__item"><a href="#recently" class="nav__link">커뮤니티</a> <!-- myPage5.main.go --></li>
 					<li class="nav__item"><a href="myPage.main.go"
 						class="nav__link">뉴스</a> <!-- myPage5.main.go --></li>
 					<li class="nav__item"><a class="nav__link"><jsp:include
@@ -99,7 +99,7 @@
 	</header>
 
 
-	<div align="center"><jsp:include page="${contentPage }"></jsp:include></div>
+	<main class="main"><jsp:include page="${contentPage }"></jsp:include></main>
 
 	<!--==================== FOOTER ====================-->
 	<footer class="footer">

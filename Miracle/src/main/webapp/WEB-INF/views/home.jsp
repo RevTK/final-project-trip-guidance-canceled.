@@ -7,7 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-    <main class="main">
         <!--==================== HOME ====================-->
         <section class="home section" id="home">
             <div class="home__container container grid">
@@ -151,6 +150,5 @@
                 <img src="resources/img/home/spinach-leaf.png" alt="newsletter image" class="newsletter__spinach">
             </div>
         </section>
-    </main>
 </body>
 </html>
