@@ -22,10 +22,10 @@ $(function() {
 </head>
 <body>
 <hr>
-<br><br><br><br><br>
+<br><br><br><br>
 <hr>
 <div class="map_wrap">
-    <div id="map" style="width:100%;height:100%;position:relative;overflow:hidden;"></div>
+    <div id="map" style="width:60%;height:100%;position:relative;overflow:hidden;"></div>
     	<div id="menu_wrap" class="bg_white">
         	<div class="option">
             	<div>
@@ -52,7 +52,7 @@ var markers = [];
 var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
     mapOption = {
         center: new kakao.maps.LatLng(37.566826, 126.9786567), // 지도의 중심좌표
-        level: 3 // 지도의 확대 레벨
+        level: 6 // 지도의 확대 레벨
     };  
 
 // 지도를 생성합니다    
