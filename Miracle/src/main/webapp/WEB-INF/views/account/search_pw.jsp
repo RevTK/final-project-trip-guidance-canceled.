@@ -7,6 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+<br><br><br><br><br><br>
 	<form class="content" action="search.pw.do" method="post" onsubmit="return searchPw()">
 	<div>
    	<input id="search_ac_id" name="ac_id"> 
