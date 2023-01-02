@@ -18,6 +18,25 @@ $(function() {
 	
 });
 </script>
+<script type="text/javascript">
+$(function() {
+	
+	$.ajax({
+		  url: "<script type="text/javascript">
+		  $(function() {
+				
+				$.ajax({
+					  url: "	https://apis-navi.kakaomobility.com/v1/waypoints/directions",
+					  method: "POST",
+					  headers: {"Authorization" : ""}
+					  data: { query : "" }
+					  
+					}).done(function(msg) {
+					  console.log(msg);
+					});
+				
+			});
+			</script>
 </head>
 <body>
 <hr>
