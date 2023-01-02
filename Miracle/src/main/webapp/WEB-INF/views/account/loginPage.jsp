@@ -7,6 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+<br><br><br><br><br><br>
 	<div class="login_area">
 		<h1>로그인</h1>
 		<form class="login_form" name="loginForm" action="account.login.do" method="post">
