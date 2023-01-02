@@ -18,25 +18,7 @@ $(function() {
 	
 });
 </script>
-<script type="text/javascript">
-$(function() {
-	
-	$.ajax({
-		  url: "<script type="text/javascript">
-		  $(function() {
-				
-				$.ajax({
-					  url: "	https://apis-navi.kakaomobility.com/v1/waypoints/directions",
-					  method: "POST",
-					  headers: {"Authorization" : ""}
-					  data: { query : "" }
-					  
-					}).done(function(msg) {
-					  console.log(msg);
-					});
-				
-			});
-			</script>
+
 </head>
 <body>
 <hr>
@@ -44,11 +26,10 @@ $(function() {
 <hr>
 <div class="map_wrap">
     <div id="map" style="width:100%;height:100%;position:relative;overflow:hidden;"></div>
-
-    <div id="menu_wrap" class="bg_white">
-        <div class="option">
-            <div>
-                <form onsubmit="searchPlaces(); return false;">
+    	<div id="menu_wrap" class="bg_white">
+        	<div class="option">
+            	<div>
+               	 <form onsubmit="searchPlaces(); return false;">
                     키워드 : <input type="text"  placeholder="검색" id="keyword" size="15"> 
                     <button type="submit">검색하기</button> 
                 </form>
