@@ -1,12 +1,16 @@
 package com.tm.mp.account;
 
-import java.io.UnsupportedEncodingException;
+import java.util.Random;
 
+import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
 
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
@@ -16,7 +20,10 @@ public class AccountDAO {
 
 	@Autowired
 	private SqlSession ss;
-
+	
+	@Autowired
+	private JavaMailSender mailSender;
+	
 	public void loginCheck(HttpServletRequest req) {
 		AccountDTO a = (AccountDTO) req.getSession().getAttribute("loginAccount");
 		if (a != null) {
@@ -77,6 +84,48 @@ public class AccountDAO {
 
 	public void accountLogoutDo(AccountDTO a, HttpServletRequest req) {
 		req.getSession().setAttribute("loginAccount", null);
+	}
+
+	public void searchIdDo(AccountDTO a, HttpServletRequest req, Model m, String ac_name, String ac_email) {
+		a.setAc_name(ac_name);
+		a.setAc_email(ac_email);
+		AccountDTO idSearch = ss.getMapper(AccountMapper.class).searchId(a);
+
+		m.addAttribute("result", idSearch);
+	}
+
+	public String emailCheckDo(String ac_email) {
+		Random random = new Random();
+		int checknum = random.nextInt(888888) + 111111;
+
+		// 이메일 보낼 양식
+		String setFrom = "frvlv6@naver.com";
+		String toMail = ac_email;
+		String title = "Miracle 비밀번호 인증 이메일 입니다.";
+		String content = "인증번호는 " + checknum + " 입니다.";
+		try {
+			// 내용들을 담기
+			MimeMessage mes = mailSender.createMimeMessage();
+			MimeMessageHelper helper = new MimeMessageHelper(mes, true, "utf-8");
+			helper.setFrom(setFrom);
+			helper.setTo(toMail);
+			helper.setSubject(title);
+			helper.setText(content);
+			mailSender.send(mes);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return Integer.toString(checknum);
+	}
+
+	public void changePwDo(HttpServletRequest req, AccountDTO a) {
+		// 비밀번호 변경해야 함
+		if(ss.getMapper(AccountMapper.class).changePwDo(a) == 1) {
+			System.out.println("변경 완료");
+			req.getSession().setAttribute("loginAccount", ss.getMapper(AccountMapper.class).getAccountByID(a));
+		}
 	}
 
 }

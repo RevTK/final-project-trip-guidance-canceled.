@@ -8,3 +8,7 @@ function logout() {
 function goAccountInfo() {
 		location.href='account.info';
 }
+
+function goPwReg(){
+	location.href='search.pw.do';
+}

@@ -7,9 +7,9 @@ create table account(
     ac_pic varchar2(200 char) not null
 )
 
-insert into account values('test','1234','테스트','서울특별시 종로구 종로1 종로1가','frvlv6@gmail.com','a.jpg')
+insert into account values('test','1234','테스트','서울특별시 종로구 종로1 종로1가','test@gmail.com','a.jpg')
 
-select * from account where ac_name='테스트' and ac_pw='1234';
+select * from account;
 drop table account cascade constraint purge;
 
 create table review_board(

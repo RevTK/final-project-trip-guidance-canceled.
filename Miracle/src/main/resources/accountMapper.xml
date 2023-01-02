@@ -2,10 +2,15 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.tm.mp.account.AccountMapper">
 <select id="getAccountByID" resultType="com.tm.mp.account.AccountDTO">
-		select * from account
-		where ac_id = #{ac_id}
+select * from account where ac_id = #{ac_id}
 </select>
 <insert id="regAccount" parameterType="com.tm.mp.account.AccountDTO">
 insert into account values(#{ac_id},#{ac_pw},#{ac_name},#{ac_addr},#{ac_email},#{ac_pic})
 </insert>
+<select id="searchId" parameterType="com.tm.mp.account.AccountDTO" resultType="com.tm.mp.account.AccountDTO">
+select * from account where ac_name = #{ac_name} and ac_email = #{ac_email}
+</select>
+<update id="changePwDo" parameterType="com.tm.mp.account.AccountDTO">
+update account set ac_pw = #{ac_pw} where ac_id= #{ac_id}
+</update>
 </mapper>

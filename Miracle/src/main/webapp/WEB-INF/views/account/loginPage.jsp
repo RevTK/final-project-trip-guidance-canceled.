@@ -14,9 +14,9 @@
 			<input name="ac_id" class="input_id" id="idInput">
 			<h6>비밀번호</h6>
 			<input name="ac_pw" type="password" class="input_pw" id="pwInput"><br>
-				<a class="find_id" type="button" href="find.id.go">아이디</a>&nbsp;
+				<a class="find_id" type="button" href="search.id.go">아이디</a>&nbsp;
 				<a>·</a>&nbsp; 
-				<a class="find_pw" type="button" href="find.pw.go">비밀번호 찾기</a><br>
+				<a class="find_pw" type="button" href="search.pw.go">비밀번호 찾기</a><br>
 				<button id="loginBtn">로그인</button>
 			<div>
 				<span>회원이 아니세요?</span>&nbsp;&nbsp;&nbsp;<a href="account.reg.go">회원가입</a>
