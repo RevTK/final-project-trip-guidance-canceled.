@@ -17,7 +17,5 @@
 	<div>
 		<button onclick="location.href='myPage.mypost.go'">내글목록보기</button> 
 	</div>
-
-
 </body>
 </html>
