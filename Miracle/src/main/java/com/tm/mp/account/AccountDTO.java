@@ -3,6 +3,7 @@ package com.tm.mp.account;
 public class AccountDTO {
 	private String ac_id;
 	private String ac_pw;
+	private String ac_pwConfirm;
 	private String ac_name;
 	private String ac_addr;
 	private String ac_email;
@@ -12,10 +13,12 @@ public AccountDTO() {
 	// TODO Auto-generated constructor stub
 }
 
-public AccountDTO(String ac_id, String ac_pw, String ac_name, String ac_addr, String ac_email, String ac_pic) {
+public AccountDTO(String ac_id, String ac_pw, String ac_pwConfirm, String ac_name, String ac_addr, String ac_email,
+		String ac_pic) {
 	super();
 	this.ac_id = ac_id;
 	this.ac_pw = ac_pw;
+	this.ac_pwConfirm = ac_pwConfirm;
 	this.ac_name = ac_name;
 	this.ac_addr = ac_addr;
 	this.ac_email = ac_email;
@@ -36,6 +39,14 @@ public String getAc_pw() {
 
 public void setAc_pw(String ac_pw) {
 	this.ac_pw = ac_pw;
+}
+
+public String getAc_pwConfirm() {
+	return ac_pwConfirm;
+}
+
+public void setAc_pwConfirm(String ac_pwConfirm) {
+	this.ac_pwConfirm = ac_pwConfirm;
 }
 
 public String getAc_name() {

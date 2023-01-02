@@ -8,7 +8,6 @@
 </head>
 <body>
 	<div class="con">
-	<button onclick="makeTestData();">테스트 데이터 채우기</button>
 	</div>
 	<form name="searchIdForm" action="search.id.do" method="post">
 		<div>

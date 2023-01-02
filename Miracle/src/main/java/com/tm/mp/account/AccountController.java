@@ -7,6 +7,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 public class AccountController {
@@ -36,7 +38,7 @@ public class AccountController {
 		req.setAttribute("contentPage", "home.jsp");
 		return "index";
 	}
-	
+
 	@RequestMapping(value = "/account.logout.do", method = RequestMethod.GET)
 	public String accountLogoutDo(AccountDTO a, HttpServletRequest req) {
 		aDAO.accountLogoutDo(a, req);
@@ -44,35 +46,54 @@ public class AccountController {
 		req.setAttribute("contentPage", "home.jsp");
 		return "index";
 	}
-	
+
 	@RequestMapping(value = "/search.id.go", method = RequestMethod.GET)
-	public String searchIdGo(AccountDTO a, HttpServletRequest req, Model m) {
+	public String searchIdGo(HttpServletRequest req) {
 		aDAO.loginCheck(req);
 		req.setAttribute("contentPage", "account/search_id.jsp");
 		return "index";
 	}
-	
+
 	@RequestMapping(value = "/search.id.do", method = RequestMethod.POST)
-	public String searchIdDo(AccountDTO a, HttpServletRequest req, Model m) {
+	public String searchIdDo(AccountDTO a, HttpServletRequest req, Model m,
+			@RequestParam(required = true, value = "ac_name") String ac_name,
+			@RequestParam(required = true, value = "ac_email") String ac_email) {
+		aDAO.searchIdDo(a, req, m, ac_name, ac_email);
 		aDAO.loginCheck(req);
-		req.setAttribute("contentPage", "account/search_id.jsp");
+		req.setAttribute("contentPage", "account/search_result_id.jsp");
 		return "index";
 	}
-	
+
 	@RequestMapping(value = "/search.pw.go", method = RequestMethod.GET)
-	public String searchPwGo(AccountDTO a, HttpServletRequest req, Model m) {
+	public String searchPwGo(HttpServletRequest req) {
 		aDAO.loginCheck(req);
 		req.setAttribute("contentPage", "account/search_pw.jsp");
 		return "index";
 	}
-	
-	@RequestMapping(value = "/search.pw.do", method = RequestMethod.GET)
-	public String searchPwDo(AccountDTO a, HttpServletRequest req, Model m) {
+
+	@RequestMapping(value = "/search.pw.do", method = RequestMethod.POST)
+	public String searchPwDo(HttpServletRequest req, AccountDTO a) {
 		aDAO.loginCheck(req);
-		req.setAttribute("contentPage", "home.jsp");
+		req.setAttribute("Account", a);
+		req.setAttribute("contentPage", "account/pwReg.jsp");
 		return "index";
 	}
-	
+
+	@RequestMapping(value = "/changePw.do", method = RequestMethod.POST)
+	public String changePwDo(AccountDTO a, HttpServletRequest req) {
+		aDAO.changePwDo(req, a);
+		req.setAttribute("contentPage", "home.jsp");
+		aDAO.loginCheck(req);
+		return "index";
+	}
+
+	@RequestMapping(value = "/emailCheck.do", method = RequestMethod.GET)
+	@ResponseBody
+	public String emailCheckDo(HttpServletRequest req, String ac_email) {
+		aDAO.loginCheck(req);
+		return aDAO.emailCheckDo(ac_email);
+	}
+
 	@RequestMapping(value = "/account.info", method = RequestMethod.GET)
 	public String accountInfo(AccountDTO a, HttpServletRequest req) {
 		return "index";

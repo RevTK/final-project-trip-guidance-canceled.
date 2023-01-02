@@ -46,11 +46,8 @@ pageEncoding="UTF-8"%>
     <link rel="stylesheet" href="resources/css/event/eventMain.css" />
 
     <!-- 팀원 js연결 -->
-    <script src="resources/js/home/nav.js"></script>
-    <script src="resources/js/account/check.js"></script>
     <script src="resources/js/account/go.js"></script>
-    <script src="resources/js/account/jquery.js"></script>
-
+    <script src="resources/js/account/check.js"></script>
     <!-- ---------------------------------------------------------------------------- -->
   </head>
 
@@ -86,8 +83,5 @@ pageEncoding="UTF-8"%>
       <div>수정</div>
       <div>내글</div>
     </footer>
-
-    <!-- js연결 -->
-    <script src="resources/js/event/eventMain.js"></script>
   </body>
 </html>
