@@ -81,4 +81,10 @@ public void setAc_pic(String ac_pic) {
 	this.ac_pic = ac_pic;
 }
 
+@Override
+public String toString() {
+	return "AccountDTO [ac_id=" + ac_id + ", ac_pw=" + ac_pw + ", ac_name=" + ac_name + ", ac_addr=" + ac_addr
+			+ ", ac_email=" + ac_email + ", ac_pic=" + ac_pic + "]";
+}
+
 }
