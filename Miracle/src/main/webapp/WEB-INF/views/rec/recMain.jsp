@@ -35,7 +35,7 @@
  
     <!-- Google Map API -->
     <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=(Key)&callback=initMap">
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDCjGlvNyptuTaaOw4gAhWL_P4aeg0euVU&callback=initMap">
     </script>
     
     <div>
@@ -232,8 +232,12 @@ function initMap() {
        infoWindow = new google.maps.InfoWindow({
          position: mapsMouseEvent.latLng,
        });
+       console.log(mapsMouseEvent);
+       let aa = "asdasd" + mapsMouseEvent.latLng.toJSON();
        infoWindow.setContent(
-         JSON.stringify(mapsMouseEvent.latLng.toJSON(), null, 2)
+         
+    		   JSON.stringify(aa, null, 2)
+         
        );
        infoWindow.open(map);
      });

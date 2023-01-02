@@ -54,8 +54,9 @@
 		<a id="logo" href="index.go">Miracle기본<span id="highlight">.</span></a>
 		<a href="index2.go">디자인2&nbsp;&nbsp;&nbsp;</a> <a href="index3.go">디자인3&nbsp;&nbsp;&nbsp;</a>
 		<div>
-			<a href="rec.main.go">코스추천(준우공간)&nbsp;&nbsp;&nbsp;</a> <a
-				href="event.main.go">이벤트페이지(태형공간)&nbsp;&nbsp;&nbsp;</a> <a
+			<a href="rec.main.go">코스추천(준우공간)&nbsp;&nbsp;&nbsp;</a> 
+			<a href="rec.kakao.go">코스추천2(준우공간)&nbsp;&nbsp;&nbsp;</a> 
+			<a href="event.main.go">이벤트페이지(태형공간)&nbsp;&nbsp;&nbsp;</a> <a
 				href="myPage.main.go">마이페이지(권공간)&nbsp;&nbsp;&nbsp;</a> <a><jsp:include
 					page="${loginPage }"></jsp:include>&nbsp;&nbsp;&nbsp;</a>
 		</div>
