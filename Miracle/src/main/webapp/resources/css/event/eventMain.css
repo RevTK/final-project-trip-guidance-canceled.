@@ -8,7 +8,7 @@
   --card-transition-easing: ease;
 }
 
-* {
+/* * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -16,9 +16,9 @@
 
 a {
 	color: blue;
-}
+} */
 
-#eventMain {
+.eventMain {
   width: 100%;
   height: 100vh;
   display: flex;
@@ -28,12 +28,13 @@ a {
   overflow: hidden;
 }
 
-#eventMain button {
+.eventMain button {
   border: none;
   background: none;
   cursor: pointer;
 }
-#eventMain button:focus {
+
+.eventMain button:focus {
   outline: none;
   border: none;
 }

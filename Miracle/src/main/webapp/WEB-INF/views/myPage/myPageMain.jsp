@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+	${sessionScope.loginAccount.ac_id }
 </body>
 </html>
