@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-<figure></figure>
+<h3>당신의 아이디는 ${result.ac_id } 입니다.</h3>
 </body>
 </html>

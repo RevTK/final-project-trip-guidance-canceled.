@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<div id="eventMain">
+	<div class="eventMain">
 		<div class="app">
 			<div class="cardList">
 				<button class="cardList__btn btn btn--left">

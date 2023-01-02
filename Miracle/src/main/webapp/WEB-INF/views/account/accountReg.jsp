@@ -22,7 +22,7 @@
 			</div>
 			<div class="pw1">비밀번호 확인</div>
 			<div class="pw2">
-				<input type="password" id="pwInput2">
+				<input type="password" id="pwInput2" name="ac_pwConfirm">
 				<font id="pwConfirm" size="2"></font>
 			</div>
 			<div class="name1">이름</div>
