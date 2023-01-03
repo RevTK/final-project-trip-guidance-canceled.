@@ -94,6 +94,31 @@ public class MyPageDAO {
 		
 	}
 
+	public void myPageDelete(AccountDTO a, HttpServletRequest req ) {
+		try {
+			AccountDTO ac = (AccountDTO) req.getSession().getAttribute("loginAccount");
+
+			if (ss.getMapper(MyPageMapper.class).myPageDelete(ac) == 1) {
+				req.setAttribute("result", "탈퇴 성공");
+				
+				String path = req.getSession().getServletContext().getRealPath("resources/files");
+				String ac_newpic = ac.getAc_pic();
+				ac_newpic = URLDecoder.decode(ac_newpic, "utf-8");
+				new File(path + "/" + ac_newpic).delete();
+				
+				
+				
+			}else {
+				req.setAttribute("result", "탈퇴실패");
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			req.setAttribute("result", "탈퇴실패");
+		}
+		
+	}
+
 	
 
 	
