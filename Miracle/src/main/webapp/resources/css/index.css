@@ -779,7 +779,7 @@ body.dark-theme {
   bottom: 3rem;
 }
 
-/*=============== BREAKPOINTS ===============*/
+/*=============== BREAKPOINTS (반응형)===============*/
 /* For small devices 갤럭시 폴드 등 */
 @media screen and (max-width: 340px) {
   .container {

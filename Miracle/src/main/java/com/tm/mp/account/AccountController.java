@@ -33,7 +33,7 @@ public class AccountController {
 	public String accountLoginDo(AccountDTO a, HttpServletRequest req) {
 		aDAO.accountLoginDo(a, req);
 		aDAO.loginCheck(req);
-		req.setAttribute("contentPage", "myPage/myPageMain.jsp");
+		req.setAttribute("contentPage", "home.jsp");
 		return "index";
 	}
 	
@@ -95,12 +95,5 @@ public class AccountController {
 	public String emailCheckDo(HttpServletRequest req, String ac_email) {
 		aDAO.loginCheck(req);
 		return aDAO.emailCheckDo(ac_email);
-	}
-	
-	@RequestMapping(value = "/account.info", method = RequestMethod.GET)
-	public String accountInfo(AccountDTO a, HttpServletRequest req) {
-		aDAO.loginCheck(req);
-		req.setAttribute("contentPage", "myPage/myPageInfo.jsp");
-		return "index";
 	}
 }
