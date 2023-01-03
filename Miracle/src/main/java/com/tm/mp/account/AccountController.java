@@ -4,10 +4,8 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
@@ -98,10 +96,11 @@ public class AccountController {
 		aDAO.loginCheck(req);
 		return aDAO.emailCheckDo(ac_email);
 	}
+	
 	@RequestMapping(value = "/account.info", method = RequestMethod.GET)
 	public String accountInfo(AccountDTO a, HttpServletRequest req) {
 		aDAO.loginCheck(req);
-		req.setAttribute("contentPage", "home.jsp");
+		req.setAttribute("contentPage", "myPage/myPageInfo.jsp");
 		return "index";
 	}
 }

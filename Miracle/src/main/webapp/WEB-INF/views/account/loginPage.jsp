@@ -28,14 +28,16 @@
 			<div class="reg-area">
 				<span>회원이 아니세요?</span>&nbsp;&nbsp;&nbsp;<a href="account.reg.go">회원가입</a>
 			</div>
-			<div class="SNS-login-area">
-				<h6>간편 로그인</h6>
+			<br>
+				<h5>간편 로그인</h5>
+			<br>
+			<div id="SNS-login-area">
 				<img style="height:40px; cursor:pointer" src="https://www.myro.co.kr/myro_image/kakaolink_btn.png">
 				<div id="naver_id_login">
 				<script>
 				var naver_id_login = new window.naver_id_login("2jeVrVkpRS6rJdiED3cm", "http://localhost/mp/account/naverLogin");
 				var state = naver_id_login.getUniqState();
-				naver_id_login.setButton("white", 2, 40);
+				naver_id_login.setButton("green", 1, 40);
 				naver_id_login.setDomain("http://localhost/mp/account/loginPage");
 				naver_id_login.setState(state);
 				naver_id_login.setPopup();
