@@ -1,20 +1,18 @@
 package com.tm.mp.mypage;
 
+
 import java.io.File;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
-import java.net.URLEncoder;
 
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.propertyeditors.URLEditor;
 import org.springframework.stereotype.Service;
 
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
-import com.tm.mp.account.AccountDAO;
 import com.tm.mp.account.AccountDTO;
 
 @Service
@@ -25,28 +23,22 @@ public class MyPageDAO {
 
 	public void myPageUpdate(HttpServletRequest req) {
 		
-		
-		
 		String path = req.getSession().getServletContext().getRealPath("resources/files");
 		MultipartRequest mr = null;
+		
 		AccountDTO loginMember = (AccountDTO) req.getSession().getAttribute("loginAccount");
-		System.out.println("2222");
+
 		System.out.println(loginMember.toString());
 		String oldFile = loginMember.getAc_pic();
-		System.out.println("1111");
 		String newFile = null;
-		
-		/*private String ac_id;
-		private String ac_pw;
-		private String ac_name;
-		private String ac_addr;
-		private String ac_email;
-		private String ac_pic;*/
-		
 		
 			try {
 				mr = new MultipartRequest(req, path, 10 * 1024 * 1024, "utf-8", new DefaultFileRenamePolicy());
 				newFile = mr.getFilesystemName("ac_newpic");
+				
+				if (newFile == null) {
+					newFile = oldFile;
+				}
 				
 				String ac_id = mr.getParameter("ac_id");
 				String ac_pw = mr.getParameter("ac_pw");
@@ -64,9 +56,11 @@ public class MyPageDAO {
 				ac.setAc_email(ac_email);
 				ac.setAc_pic(ac_newpic);
 				
+				System.out.println(ac.toString());
+				
 				if (ss.getMapper(MyPageMapper.class).myPageUpdate(ac) == 1) {
 					req.setAttribute("result", "수정성공");
-					req.getSession().setAttribute("loginMember", ac);
+					req.getSession().setAttribute("loginAccount", ac);
 					
 					if (!oldFile.equals(newFile)) {
 						oldFile = URLDecoder.decode(oldFile,"utf-8");
@@ -94,19 +88,20 @@ public class MyPageDAO {
 		
 	}
 
-	public void myPageDelete(AccountDTO a, HttpServletRequest req ) {
+	public void myPageDelete(HttpServletRequest req ) {
 		try {
-			AccountDTO ac = (AccountDTO) req.getSession().getAttribute("loginAccount");
+			AccountDTO a = (AccountDTO) req.getSession().getAttribute("loginAccount");
 
-			if (ss.getMapper(MyPageMapper.class).myPageDelete(ac) == 1) {
+			if (ss.getMapper(MyPageMapper.class).myPageDelete(a) == 1) {
 				req.setAttribute("result", "탈퇴 성공");
 				
 				String path = req.getSession().getServletContext().getRealPath("resources/files");
-				String ac_newpic = ac.getAc_pic();
+				String ac_newpic = a.getAc_pic();
 				ac_newpic = URLDecoder.decode(ac_newpic, "utf-8");
 				new File(path + "/" + ac_newpic).delete();
 				
-				
+				/*logout(req);
+				loginCheck(req);*/
 				
 			}else {
 				req.setAttribute("result", "탈퇴실패");
@@ -118,6 +113,25 @@ public class MyPageDAO {
 		}
 		
 	}
+
+	/*private void loginCheck(HttpServletRequest req) {
+		AccountDTO a = (AccountDTO) req.getSession().getAttribute("loginAccount");
+		if (a != null) {
+			req.setAttribute("loginPage", "account/loginSuccess.jsp");
+		} else {
+			req.setAttribute("loginPage", "account/login.jsp");
+		}
+
+	}
+
+	private void logout(HttpServletRequest req) {
+		req.getSession().setAttribute("loginAccount", null);
+		
+	}
+*/
+	
+
+	
 
 	
 

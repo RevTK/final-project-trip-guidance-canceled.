@@ -52,11 +52,11 @@ public class MyPageController {
 	
 	
 	
-	@RequestMapping(value = "/myPage.delete.go", method = RequestMethod.POST)
+	@RequestMapping(value = "/myPage.delete.go", method = RequestMethod.GET)
 	public String myPageDeleteGo(AccountDTO a, HttpServletRequest req ) {
 		
 		aDAO.loginCheck(req);
-		mpDAO.myPageDelete(a,req);
+		mpDAO.myPageDelete(req);
 		
 		req.setAttribute("contentPage", "home.jsp");
 		
