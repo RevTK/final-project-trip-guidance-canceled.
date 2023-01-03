@@ -7,6 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+<br><br><br><br><br><br>
 	<h1>회원 가입</h1>
 	<form action="account.reg.do" method="post"
 		enctype="multipart/form-data"
@@ -34,14 +35,15 @@
 			<input id="addrInput" name="ac_addr">
 			</div>
 			<div class="email">이메일</div>
-			<div>
+			<div class="email">
 			<input id="" name="ac_email">
 			</div>
 			<div class="pic1">사진</div>
 			<div class="pic2">
 				<input name="ac_pic" type="file">
 			</div>
-			<button>가입</button>
+			<button>가입</button> <br>
+			<button onclick='history.back(-1)'>뒤로가기</button>
 		</div>
 	</form>
 </body>

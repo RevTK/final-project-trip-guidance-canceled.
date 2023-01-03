@@ -57,10 +57,10 @@ public class HomeController {
 		return "index";
 	}
 
-	@RequestMapping(value = "/event.main.go", method = RequestMethod.GET)
+	@RequestMapping(value = "/admin.main.go", method = RequestMethod.GET)
 	public String eventMainGo(HttpServletRequest req) {
 		aDAO.loginCheck(req);
-		req.setAttribute("contentPage", "event/eventMain.jsp");
+		req.setAttribute("contentPage", "admin/admin.jsp");
 		return "index";
 	}
 

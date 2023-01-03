@@ -7,6 +7,7 @@
 <title>아이디 찾기</title>
 </head>
 <body>
+<br><br><br><br><br><br>
 	<div class="con">
 	</div>
 	<form name="searchIdForm" action="search.id.do" method="post">
