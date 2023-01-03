@@ -7,6 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+<br><br><br><br><br><br>
 <form action="changePw.do" method="post" onsubmit="return changePw();">
 <input type="hidden" value="${Account.ac_id }" name="ac_id" id="change-pw-id">
 <input name="ac_pw" placeholder="새 비밀번호 입력" id="change-pw-pw">

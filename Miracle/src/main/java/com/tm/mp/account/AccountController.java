@@ -35,7 +35,7 @@ public class AccountController {
 	public String accountLoginDo(AccountDTO a, HttpServletRequest req) {
 		aDAO.accountLoginDo(a, req);
 		aDAO.loginCheck(req);
-		req.setAttribute("contentPage", "home.jsp");
+		req.setAttribute("contentPage", "myPage/myPageMain.jsp");
 		return "index";
 	}
 

@@ -7,9 +7,10 @@
 <title>Insert title here</title>
 </head>
 <body>
+<br><br><br><br><br><br>
 	<form class="content" action="search.pw.do" method="post" onsubmit="return searchPw()">
 	<div>
-   	<input id="search_ac_id" name="ac_id"> 
+   	<input id="search_ac_id" name="ac_id" placeholder="아이디"> 
    	<input name="ac_email" type="email" id="search_ac_email" placeholder="이메일"> 
    	<button type="button" id="email_check">이메일 인증</button><br>
    	<input placeholder="인증번호를 입력해주세요" id="email_num" disabled="disabled">
