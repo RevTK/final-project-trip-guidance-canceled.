@@ -57,7 +57,6 @@ public class MyPageController {
 		
 		mpDAO.myPageDelete(req);
 		aDAO.accountLogoutDo(a, req);
-		
 		aDAO.loginCheck(req);
 		req.setAttribute("contentPage", "home.jsp");
 		
