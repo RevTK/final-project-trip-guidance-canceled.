@@ -6,8 +6,8 @@ public interface AccountMapper {
 
 	int regAccount(AccountDTO a);
 
-	AccountDTO searchId(AccountDTO a);
-
 	int changePwDo(AccountDTO a);
+
+	AccountDTO searchId(AccountDTO a);
 
 }

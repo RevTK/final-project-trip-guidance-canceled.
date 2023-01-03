@@ -38,7 +38,14 @@ public class AccountController {
 		req.setAttribute("contentPage", "myPage/myPageMain.jsp");
 		return "index";
 	}
-
+	
+	@RequestMapping(value = "/naver.login.go", method = RequestMethod.GET)
+	public String naverLoginGo(AccountDTO a, HttpServletRequest req) {
+		aDAO.loginCheck(req);
+		req.setAttribute("contentPage", "account/naverLogin.jsp");
+		return "index";
+	}
+	
 	@RequestMapping(value = "/account.logout.do", method = RequestMethod.GET)
 	public String accountLogoutDo(AccountDTO a, HttpServletRequest req) {
 		aDAO.accountLogoutDo(a, req);
@@ -55,10 +62,8 @@ public class AccountController {
 	}
 
 	@RequestMapping(value = "/search.id.do", method = RequestMethod.POST)
-	public String searchIdDo(AccountDTO a, HttpServletRequest req, Model m,
-			@RequestParam(required = true, value = "ac_name") String ac_name,
-			@RequestParam(required = true, value = "ac_email") String ac_email) {
-		aDAO.searchIdDo(a, req, m, ac_name, ac_email);
+	public String searchIdDo(AccountDTO a, HttpServletRequest req) {
+		aDAO.searchIdDo(a, req);
 		aDAO.loginCheck(req);
 		req.setAttribute("contentPage", "account/search_result_id.jsp");
 		return "index";
@@ -93,7 +98,6 @@ public class AccountController {
 		aDAO.loginCheck(req);
 		return aDAO.emailCheckDo(ac_email);
 	}
-
 	@RequestMapping(value = "/account.info", method = RequestMethod.GET)
 	public String accountInfo(AccountDTO a, HttpServletRequest req) {
 		aDAO.loginCheck(req);
