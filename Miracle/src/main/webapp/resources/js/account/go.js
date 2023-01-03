@@ -5,8 +5,8 @@ function logout() {
 	}
 }
 
-function goAccountInfo() {
-		location.href='account.info';
+function goMyPage() {
+		location.href='myPage.main.go';
 }
 
 function goNaverLogin(){
