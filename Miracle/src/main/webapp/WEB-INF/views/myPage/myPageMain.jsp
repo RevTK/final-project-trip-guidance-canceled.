@@ -5,9 +5,12 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+
+
 </head>
-<body>
 <br><br><br><br><br><br>
+<body>
+
 	<div>
 		<button onclick="location.href='myPage.info.go'">내정보 보기</button> 
 	</div>
