@@ -86,12 +86,22 @@ public class AccountDAO {
 		req.getSession().setAttribute("loginAccount", null);
 	}
 
-	public void searchIdDo(AccountDTO a, HttpServletRequest req, Model m, String ac_name, String ac_email) {
-		a.setAc_name(ac_name);
-		a.setAc_email(ac_email);
+	public void searchIdDo(AccountDTO a, HttpServletRequest req) {
+		a.setAc_name(a.getAc_name());
+		a.setAc_email(a.getAc_email());
 		AccountDTO idSearch = ss.getMapper(AccountMapper.class).searchId(a);
-
-		m.addAttribute("result", idSearch);
+		
+		String getId = idSearch.getAc_id();
+		String result = getId;
+		
+		int length = result.length();
+		
+		String maskedId = "";
+		
+		for(int i = 0; i < length; i++) {
+			maskedId = i < length / 2 ? maskedId + result.charAt(i) : maskedId + "*";
+		}
+			req.setAttribute("result", maskedId);		
 	}
 
 	public String emailCheckDo(String ac_email) {
@@ -101,7 +111,7 @@ public class AccountDAO {
 		// 이메일 보낼 양식
 		String setFrom = "frvlv6@naver.com";
 		String toMail = ac_email;
-		String title = "Miracle 비밀번호 인증 이메일 입니다.";
+		String title = "비밀번호 인증 이메일 입니다.";
 		String content = "인증번호는 " + checknum + " 입니다.";
 		try {
 			// 내용들을 담기

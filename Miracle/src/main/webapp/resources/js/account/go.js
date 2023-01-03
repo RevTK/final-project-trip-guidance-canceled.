@@ -9,6 +9,6 @@ function goAccountInfo() {
 		location.href='account.info';
 }
 
-function goPwReg(){
-	location.href='search.pw.do';
+function goNaverLogin(){
+		location.href="naver.login.go";
 }
