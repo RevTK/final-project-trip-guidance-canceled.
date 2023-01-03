@@ -96,6 +96,8 @@ public class AccountController {
 
 	@RequestMapping(value = "/account.info", method = RequestMethod.GET)
 	public String accountInfo(AccountDTO a, HttpServletRequest req) {
+		aDAO.loginCheck(req);
+		req.setAttribute("contentPage", "home.jsp");
 		return "index";
 	}
 }
