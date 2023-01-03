@@ -49,6 +49,7 @@ pageEncoding="UTF-8"%>
     <script src="resources/js/account/check.js"></script>
     <script src="resources/js/account/go.js"></script>
     <script src="resources/js/account/naverLogin.js"></script>
+    <script src="resources/js/mypage/go.js"></script>
     <!-- ---------------------------------------------------------------------------- -->
   </head>
 

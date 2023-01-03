@@ -10,7 +10,7 @@
 	<div id="loginSuccessArea">
 		<div class="">
 			<div style="height: 70px;">
-				<img src="resources/files/${sessionScope.loginAccount.ac_pic }">
+				<img style="height: 70px;" src="resources/files/${sessionScope.loginAccount.ac_pic }">
 			</div>
 			<div style="height: 20px;">${sessionScope.loginAccount.ac_id }</div>
 		</div>

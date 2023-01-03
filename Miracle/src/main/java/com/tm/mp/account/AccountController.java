@@ -98,4 +98,10 @@ public class AccountController {
 		aDAO.loginCheck(req);
 		return aDAO.emailCheckDo(ac_email);
 	}
+	@RequestMapping(value = "/account.info", method = RequestMethod.GET)
+	public String accountInfo(AccountDTO a, HttpServletRequest req) {
+		aDAO.loginCheck(req);
+		req.setAttribute("contentPage", "home.jsp");
+		return "index";
+	}
 }

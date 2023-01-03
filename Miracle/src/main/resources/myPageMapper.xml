@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tm.mp.mypage.MyPageMapper">
+
+<update id="myPageUpdate" parameterType="com.tm.mp.account.AccountDTO">
+	update account set ac_pw = #{ac_pw}, ac_name = #{ac_name}, ac_addr = #{ac_addr},
+	ac_email = #{ac_email}, ac_pic = #{ac_pic} where ac_id = #{ac_id} 
+</update>
+
+ <delete id="myPageDelete" parameterType="com.tm.mp.account.AccountDTO">
+	delete from account where ac_id = #{ac_id}
+</delete> 
+
+</mapper>
