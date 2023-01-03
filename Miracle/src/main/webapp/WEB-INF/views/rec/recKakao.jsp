@@ -10,9 +10,11 @@
 	$(function() {
 		
 		$("#searchBtn").click(function() {
+		
+		// 관광지 검색 결과 지우기
 		$("#my_div").empty();
 		
-				
+		// 관광지 api		
 		let keyword = encodeURIComponent($("#keyword").val());
 		console.log(keyword);
 		let keywordUrl = "http://apis.data.go.kr/B551011/KorService/searchKeyword?serviceKey=PsWL%2Ftf5nGQd3uPozFQ6nKgfpXL7p9PmrJ3TiHOWQV%2BSLHFuhy2QwtTdqpY8NvMrcO4vly6SLSFOAD7TadOn9g%3D%3D&numOfRows=10&pageNo=1&MobileOS=ETC&MobileApp=TestApp&_type=json&keyword="
@@ -32,6 +34,7 @@
 			console.log(msg.response.body.items.item);			
 			let ar = msg.response.body.items.item;
 			
+			// 관광지 검색 결과 div에 뿌려줌
 			const element = document.getElementById('my_div');
 				$.each(ar,function(i, obj) {
 					element.innerHTML += '<div class="my_divChild">' + obj.title + '</div>';
