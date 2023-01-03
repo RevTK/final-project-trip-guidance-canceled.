@@ -7,6 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+<br><br><br><br><br><br><br><br>
 	<h1>회원 가입</h1>
 	<form action="account.reg.do" method="post"
 		enctype="multipart/form-data"

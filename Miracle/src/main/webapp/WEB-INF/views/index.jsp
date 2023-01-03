@@ -9,8 +9,8 @@
 <!--=============== [CSS CDN]===============-->
 
 <!-- --------------- FAVICON --------------- -->
-<link rel="shortcut icon" href="recources/img/home/favicon.png"
-	type="image/x-icon" />
+<!-- <link rel="shortcut icon" href="recources/img/home/favicon.png"
+	type="image/x-icon" /> -->
 
 <!-- --------------- REMIXICONS --------------- -->
 <link
@@ -63,6 +63,8 @@
 					<li class="nav__item"><a href="#" class="nav__link">커뮤니티</a></li>
 					<li class="nav__item"><a href="myPage.main.go"
 						class="nav__link">뉴스</a></li>
+					<li class="nav__item"><a href="admin.main.go"
+						class="nav__link">관리자</a></li>
 					<li class="nav__item"><a class="nav__link"><jsp:include
 								page="${loginPage }"></jsp:include></a></li>
 				</ul>
@@ -90,7 +92,7 @@
 		</nav>
 	</header>
 
-	<div align="center"><jsp:include page="${contentPage }"></jsp:include></div>
+	<div><jsp:include page="${contentPage }"></jsp:include></div>
 
 	<!--==================== FOOTER ====================-->
 	<footer class="footer">
@@ -142,12 +144,10 @@
 							class="ri-facebook-circle-fill"></i>
 						</a>
 						<a href="https://www.instagram.com" target="_blank"
-							class="footer__social-link"> <i
-							class="ri-instagram-fill"></i>
+							class="footer__social-link"> <i class="ri-instagram-fill"></i>
 						</a>
 						<a href="https://www.twitter.com" target="_blank"
-							class="footer__social-link"> <i
-							class="ri-twitter-fill"></i>
+							class="footer__social-link"> <i class="ri-twitter-fill"></i>
 						</a>
 					</ul>
 				</div>
