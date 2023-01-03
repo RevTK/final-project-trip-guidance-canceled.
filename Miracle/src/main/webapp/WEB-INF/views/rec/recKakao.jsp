@@ -12,14 +12,17 @@
 		$("#searchBtn").click(function() {
 		
 		// 관광지 검색 결과 지우기
-		$("#my_div").empty();
+		$("#my_div2").empty();
 		
-		// 관광지 api		
+		// 관광지 api	
+		
+			// 키워드 인코딩
 		let keyword = encodeURIComponent($("#keyword").val());
-		console.log(keyword);
-		let keywordUrl = "http://apis.data.go.kr/B551011/KorService/searchKeyword?serviceKey=PsWL%2Ftf5nGQd3uPozFQ6nKgfpXL7p9PmrJ3TiHOWQV%2BSLHFuhy2QwtTdqpY8NvMrcO4vly6SLSFOAD7TadOn9g%3D%3D&numOfRows=10&pageNo=1&MobileOS=ETC&MobileApp=TestApp&_type=json&keyword="
-				+ keyword;
-		let areaCodeUrl = "https://apis.data.go.kr/B551011/KorService/areaCode?serviceKey=PsWL%2Ftf5nGQd3uPozFQ6nKgfpXL7p9PmrJ3TiHOWQV%2BSLHFuhy2QwtTdqpY8NvMrcO4vly6SLSFOAD7TadOn9g%3D%3D&numOfRows=10&pageNo=1&MobileOS=ETC&MobileApp=AppTest&areaCode=1&_type=json";
+		
+		// console.log(keyword);
+		let keywordUrl = "http://apis.data.go.kr/B551011/KorService/searchKeyword?serviceKey=PsWL%2Ftf5nGQd3uPozFQ6nKgfpXL7p9PmrJ3TiHOWQV%2BSLHFuhy2QwtTdqpY8NvMrcO4vly6SLSFOAD7TadOn9g%3D%3D&numOfRows=10&pageNo=1&MobileOS=ETC&MobileApp=TestApp&_type=json&keyword=" + keyword + "&arrange=readcount";
+		// 지역코드 url
+		// let areaCodeUrl = "https://apis.data.go.kr/B551011/KorService/areaCode?serviceKey=PsWL%2Ftf5nGQd3uPozFQ6nKgfpXL7p9PmrJ3TiHOWQV%2BSLHFuhy2QwtTdqpY8NvMrcO4vly6SLSFOAD7TadOn9g%3D%3D&numOfRows=10&pageNo=1&MobileOS=ETC&MobileApp=AppTest&areaCode=1&_type=json";
 		$.ajax(
 				{
 					url : keywordUrl,
@@ -30,28 +33,26 @@
 
 					}
 				}).done(function(msg) {
-			console.log(msg);
-			console.log(msg.response.body.items.item);			
+			// console.log(msg);
+			// console.log(msg.response.body.items.item);			
 			let ar = msg.response.body.items.item;
 			
 			// 관광지 검색 결과 div에 뿌려줌
-			const element = document.getElementById('my_div');
-				$.each(ar,function(i, obj) {
-					element.innerHTML += '<div class="my_divChild">' + obj.title + '</div>';
-					console.log(element);
-					console.log(obj.title);
+			const element = document.getElementById('my_div2');
+				$.each(ar, function(i, obj) {
+					element.innerHTML += '<div class="my_divChild">' + obj.title + '</div>'  /* + '<img style="width:400px;height:400px;" src="' + obj.firstimage + '">' */ ;
+					// console.log(obj.title);
 				});
+					// console.log(element);
 				
-				element.className = 'my_div';
 
-				return element;
+				
 		});
 				
 		
 	});
 });
 </script>
-
 </head>
 <body>
 	<hr>
@@ -62,7 +63,7 @@
 	<hr>
 	<div class="map_wrap">
 		<div id="map"
-			style="width: 60%; height: 100%; position: relative; overflow: hidden;"></div>
+			style="width: 55%; height: 100%; position: relative; overflow: hidden;"></div>
 		<div id="menu_wrap" class="bg_white">
 			<div class="option">
 				<div>
@@ -77,7 +78,10 @@
 			<div id="pagination"></div>
 		</div>
 	</div>
+	<div style="display:flex;align-content: space-around;justify-content: center;">
 	<div id="my_div"></div>
+	<div id="my_div2"></div>
+	</div>
 
 
 	<script type="text/javascript"
@@ -128,6 +132,7 @@
 				// 정상적으로 검색이 완료됐으면
 				// 검색 목록과 마커를 표출합니다
 				displayPlaces(data);
+				selectCose(data);
 
 				// 페이지 번호를 표출합니다
 				displayPagination(pagination);
@@ -202,10 +207,22 @@
 			// 검색된 장소 위치를 기준으로 지도 범위를 재설정합니다
 			map.setBounds(bounds);
 		}
+		
+		function selectCose(places) {
+			$("#my_div").empty();
+			const element = document.getElementById('my_div');
+			for (var i = 0; i < places.length; i++) {
+				element.innerHTML += '<div class="my_divChild">' + places[i].place_name + '</div>';
+				element.className = "my_div";
+			}
+			return element;
+		}
 
 		// 검색결과 항목을 Element로 반환하는 함수입니다
 		function getListItem(index, places) {
-
+			// console.log(places);
+			
+			
 			var el = document.createElement('li'), itemStr = '<span class="markerbg marker_'
 					+ (index + 1)
 					+ '"></span>'
@@ -228,6 +245,7 @@
 
 			return el;
 		}
+		
 
 		// 마커를 생성하고 지도 위에 마커를 표시하는 함수입니다
 		function addMarker(position, idx, title) {
