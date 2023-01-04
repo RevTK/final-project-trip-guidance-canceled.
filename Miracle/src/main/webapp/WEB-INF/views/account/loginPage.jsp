@@ -6,6 +6,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js" charset="utf-8"></script>
+<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
 </head>
 <body>
 	<br>
@@ -28,23 +29,26 @@
 			<div class="reg-area">
 				<span>회원이 아니세요?</span>&nbsp;&nbsp;&nbsp;<a href="account.reg.go">회원가입</a>
 			</div>
-			<div class="SNS-login-area">
-				<h6>간편 로그인</h6>
-				<img style="height:40px; cursor:pointer" src="https://www.myro.co.kr/myro_image/kakaolink_btn.png">
-				<div id="naver_id_login">
-				<script>
-				var naver_id_login = new window.naver_id_login("2jeVrVkpRS6rJdiED3cm", "http://localhost/mp/account/naverLogin");
-				var state = naver_id_login.getUniqState();
-				naver_id_login.setButton("white", 2, 40);
-				naver_id_login.setDomain("http://localhost/mp/account/loginPage");
-				naver_id_login.setState(state);
-				naver_id_login.setPopup();
-				naver_id_login.init_naver_id_login();
-				</script>
-				</div>
+			<br>
+				<h5>간편 로그인</h5>
+			<br>
+			<div id="SNS-login-area">
+				<a onclick="kakaoLogin()">
+  				<img src="https://www.myro.co.kr/myro_image/kakaolink_btn.png" width="40" alt="카카오 로그인 버튼" /></a>
+				<div id="naver_id_login"></div>
 				<img style="height:40px; cursor:pointer" src="https://www.myro.co.kr/myro_image/google_btn.png">
-			</div>
+		</div>
 		</form>
-	</div>
+		</div>
+		<script>
+		var naver_id_login = new naver_id_login("Q141vzvaIl6ZvPN2b4UJ",
+		"http://localhost/mp/naverLogin.go");
+		var state = naver_id_login.getUniqState();
+		naver_id_login.setButton("green", 1, 40);
+		naver_id_login.setDomain("http://localhost/mp/naverLogin.go");
+		naver_id_login.setState(state);
+		naver_id_login.setPopup();
+		naver_id_login.init_naver_id_login();
+</script>
 </body>
 </html>

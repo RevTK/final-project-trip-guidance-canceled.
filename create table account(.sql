@@ -1,15 +1,17 @@
 create table account(
-    ac_id varchar2(20 char) primary key,
+    ac_id varchar2(50 char) primary key,
     ac_pw varchar2(30 char) not null,
     ac_name varchar2(20 char) not null,
     ac_addr varchar2(100 char) not null,
     ac_email varchar2(100 char) not null,
-    ac_pic varchar2(200 char) not null
+    ac_pic varchar2(200 char) not null,
+	ac_linkWhere number(1) not null
 )
 
-insert into account values('test','1234','테스트','서울특별시 종로구 종로1 종로1가','test@gmail.com','a.jpg')
+insert into account values('test','1234','테스트','서울특별시 종로구 종로1 종로1가','test@gmail.com','a.jpg','1')
 
 select * from account;
+delete from account where ac_id="frvlv6";
 drop table account cascade constraint purge;
 
 create table review_board(
