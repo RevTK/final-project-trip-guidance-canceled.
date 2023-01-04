@@ -9,7 +9,7 @@ function kakaoLogin() {
 
 			getInfo();
 		},
-		
+
 		fail : function(err) {
 			console.log(err);
 		}
@@ -29,7 +29,7 @@ function getInfo() {
 
 			console.log(ac_name, ac_email, ac_pic);
 		},
-		
+
 		fail : function(error) {
 			alert('카카오 로그인에 실패했습니다. 관리자에게 문의하세요.' + JSON.stringify(error));
 		}
@@ -37,21 +37,22 @@ function getInfo() {
 }
 
 function checkEmail(ac_name, ac_email, ac_pic) {
-
-	$.ajax({
-		url : "kakaoLogin.check",
-		type : "POST",
-		data : {
-			"ac_name" : ac_name,
-			"ac_email" : ac_email,
-			"ac_pic" : ac_pic,
-		},
-		success : function(data) {
-			console.log(data)
-			if (data == 1) {
-				console.log('good')
-				location.reload()
+	$(document).ready(function() {
+		$.ajax({
+			url : "kakaoLogin.check",
+			type : "GET",
+			data : {
+				"ac_name" : ac_name,
+				"ac_email" : ac_email,
+				"ac_pic" : ac_pic,
+			},
+			success : function(data) {
+				console.log(data)
+				if (data == 1) {
+					console.log('good')
+					location.reload()
+				}
 			}
-		}
+		});
 	});
 }
