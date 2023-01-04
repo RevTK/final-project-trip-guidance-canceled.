@@ -10,4 +10,10 @@ public interface AccountMapper {
 
 	AccountDTO searchId(AccountDTO a);
 
+	int checkIdNaver(AccountDTO a);
+
+	int checkIdKakao(AccountDTO a);
+
+	int join(AccountDTO a);
+
 }

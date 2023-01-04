@@ -4,11 +4,11 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import java.text.ParseException;
 
 @Controller
 public class AccountController {
@@ -38,20 +38,61 @@ public class AccountController {
 		req.setAttribute("contentPage", "home.jsp");
 		return "index";
 	}
-	
-	@RequestMapping(value = "/naver.login.go", method = RequestMethod.GET)
-	public String naverLoginGo(AccountDTO a, HttpServletRequest req) {
-		aDAO.loginCheck(req);
-		req.setAttribute("contentPage", "account/naverLogin.jsp");
-		return "index";
-	}
-	
+
 	@RequestMapping(value = "/account.logout.do", method = RequestMethod.GET)
 	public String accountLogoutDo(AccountDTO a, HttpServletRequest req) {
 		aDAO.accountLogoutDo(a, req);
 		aDAO.loginCheck(req);
 		req.setAttribute("contentPage", "home.jsp");
 		return "index";
+	}
+
+	@RequestMapping(value = "/naverLogin.go", method = RequestMethod.GET)
+	public String naverLoginGo(AccountDTO a, HttpServletRequest req) {
+		aDAO.loginCheck(req);
+		req.setAttribute("contentPage", "account/naverLogin.jsp");
+		return "index";
+	}
+
+	@RequestMapping(value = "/naverlogin.check", method = RequestMethod.GET)
+	@ResponseBody
+	public int naverLoginCheck(HttpServletRequest req, AccountDTO a) {
+		aDAO.loginCheck(req);
+		return aDAO.naverLogin(a);
+	}
+
+	@RequestMapping(value = "/naverLogin.do", method = RequestMethod.GET)
+	public String naverloginDo(HttpServletRequest req, AccountDTO a) {
+		if (req.getParameter("ac_id") != null) {
+			aDAO.loginNaver(req, a);
+			aDAO.loginCheck(req);
+		} else {
+			System.out.println("로그인 실패");
+		}
+		req.setAttribute("contentPage", "home.jsp");
+
+		return "index";
+	}
+
+	@RequestMapping(value = "/naverJoin.go", method = RequestMethod.GET)
+	public String naverjoingo(HttpServletRequest req, AccountDTO a) {
+		aDAO.naverJoin(req, a);
+		a.setAc_linkWhere(3);
+		aDAO.accountLoginDo(a, req);
+		aDAO.loginCheck(req);
+		req.setAttribute("contentPage", "home.jsp");
+
+		return "index";
+	}
+
+	@RequestMapping(value = "/kakaoLogin.check", method = RequestMethod.POST, produces = "application/json; charset=utf8")
+	@ResponseBody
+	public int kakaoLoginCheck(@RequestParam("ac_name") String ac_name, @RequestParam("ac_email") String ac_email,
+			@RequestParam("ac_pic") String ac_pic, HttpServletRequest req,
+			AccountDTO a) throws ParseException {
+		int kakaoLogin = aDAO.kakaoLogin(ac_name, ac_email, ac_pic, req, a);
+		aDAO.loginCheck(req);
+		return kakaoLogin;
 	}
 
 	@RequestMapping(value = "/search.id.go", method = RequestMethod.GET)
