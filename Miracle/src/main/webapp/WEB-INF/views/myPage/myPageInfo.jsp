@@ -17,7 +17,8 @@
 	NAME: ${sessionScope.loginAccount.ac_name } <br>
 	ADDR: ${sessionScope.loginAccount.ac_addr } <br>
 	EMAIL: ${sessionScope.loginAccount.ac_email } <br>
-	PIC : ${sessionScope.loginAccount.ac_pic } <br>
+	IMG : <img src="resources/files/${sessionScope.loginAccount.ac_pic }">  <br>
+	<button onclick="location.href='index.go'">home 으로 돌아가기</button>
 
 
 </body>
