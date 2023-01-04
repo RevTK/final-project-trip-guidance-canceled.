@@ -9,8 +9,8 @@
 <style type="text/css">
 /* Set the size of the div element that contains the map */
 #map {
-            width: 100%;
-            height: 800px;
+            width: 500px;
+            height: 500px;
             margin: 0;
             padding: 0
         }
@@ -29,43 +29,84 @@
 <script src="resources/js/rec/map.js"></script>
 </head>
 <body>
+
+<br><br><br><br><br>
+
+<div class="hotel-search">
+      <div id="findhotels">Find hotels in:</div>
+
+      <div id="locationField">
+        <input id="autocomplete" placeholder="Enter a city" type="text" />
+      </div>
+
+      <div id="controls">
+        <select id="country">
+          <option value="all">All</option>
+          <option value="au">Australia</option>
+          <option value="br">Brazil</option>
+          <option value="ca">Canada</option>
+          <option value="fr">France</option>
+          <option value="de">Germany</option>
+          <option value="mx">Mexico</option>
+          <option value="nz">New Zealand</option>
+          <option value="it">Italy</option>
+          <option value="za">South Africa</option>
+          <option value="es">Spain</option>
+          <option value="pt">Portugal</option>
+          <option value="us" selected>U.S.A.</option>
+          <option value="uk">United Kingdom</option>
+        </select>
+      </div>
+    </div>
     
     <div id="map">
     </div>
  
+ 
+  <div id="listing">
+      <table id="resultsTable">
+        <tbody id="results"></tbody>
+      </table>
+    </div>
+
+    <div style="display: none">
+      <div id="info-content">
+        <table>
+          <tr id="iw-url-row" class="iw_table_row">
+            <td id="iw-icon" class="iw_table_icon"></td>
+            <td id="iw-url"></td>
+          </tr>
+          <tr id="iw-address-row" class="iw_table_row">
+            <td class="iw_attribute_name">Address:</td>
+            <td id="iw-address"></td>
+          </tr>
+          <tr id="iw-phone-row" class="iw_table_row">
+            <td class="iw_attribute_name">Telephone:</td>
+            <td id="iw-phone"></td>
+          </tr>
+          <tr id="iw-rating-row" class="iw_table_row">
+            <td class="iw_attribute_name">Rating:</td>
+            <td id="iw-rating"></td>
+          </tr>
+          <tr id="iw-website-row" class="iw_table_row">
+            <td class="iw_attribute_name">Website:</td>
+            <td id="iw-website"></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    
+    
     <!-- Google Map API -->
     <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=&callback=initMap">
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDCjGlvNyptuTaaOw4gAhWL_P4aeg0euVU&callback=initMap&language=en&libraries=places&v=weekly">
     </script>
     
-    <div>
-<strong>Start: </strong>
-<select id="start" onchange="calcRoute();">
-  <option value="oklahoma city, ok">Oklahoma City</option>
-  <option value="amarillo, tx">Amarillo</option>
-  <option value="gallup, nm">Gallup, NM</option>
-  <option value="flagstaff, az">Flagstaff, AZ</option>
-  <option value="winona, az">Winona</option>
-  <option value="kingman, az">Kingman</option>
-  <option value="barstow, ca">Barstow</option>
-  <option value="san bernardino, ca">San Bernardino</option>
-  <option value="los angeles, ca">Los Angeles</option>
-</select>
-<strong>End: </strong>
-<select id="end" onchange="calcRoute();">
-  <option value="oklahoma city, ok">Oklahoma City</option>
-  <option value="amarillo, tx">Amarillo</option>
-  <option value="gallup, nm">Gallup, NM</option>
-  <option value="flagstaff, az">Flagstaff, AZ</option>
-  <option value="winona, az">Winona</option>
-  <option value="kingman, az">Kingman</option>
-  <option value="barstow, ca">Barstow</option>
-  <option value="san bernardino, ca">San Bernardino</option>
-  <option value="los angeles, ca">Los Angeles</option>
-</select>
-</div>
     
 <script type="text/javascript">
+$(function() {
+	
+
 //Initialize and add the map
 function initMap() {
 	 
@@ -253,33 +294,11 @@ function initMap() {
      
      directionsRenderer.setMap(map);
      
-     const onChangeHandler = function () {
-    	    calculateAndDisplayRoute(directionsService, directionsRenderer);
-    	  };
 
-    	  
-    	  document.getElementById("start").addEventListener("change", onChangeHandler);
-    	  document.getElementById("end").addEventListener("change", onChangeHandler);
-    	
-    	
-function calculateAndDisplayRoute(directionsService, directionsRenderer) {
-	  directionsService
-	    .route({
-	      origin: {
-	        query: document.getElementById("start").value,
-	      },
-	      destination: {
-	        query: document.getElementById("end").value,
-	      },
-	      travelMode: google.maps.TravelMode.DRIVING,
-	    })
-	    .then((response) => {
-	      directionsRenderer.setDirections(response);
-	    })
-	    .catch((e) => window.alert("Directions request failed due to " + status));
-	}
 
 window.initMap = initMap;
+
+});
 </script>
     
 </body>
