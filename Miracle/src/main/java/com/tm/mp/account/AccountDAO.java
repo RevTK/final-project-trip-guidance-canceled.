@@ -19,10 +19,10 @@ public class AccountDAO {
 
 	@Autowired
 	private SqlSession ss;
-	
+
 	@Autowired
 	private JavaMailSender mailSender;
-	
+
 	public void loginCheck(HttpServletRequest req) {
 		AccountDTO a = (AccountDTO) req.getSession().getAttribute("loginAccount");
 		if (a != null) {
@@ -45,6 +45,7 @@ public class AccountDAO {
 			String ac_addr = mr.getParameter("ac_addr");
 			String ac_email = mr.getParameter("ac_email");
 			String ac_pic = mr.getFilesystemName("ac_pic");
+			int ac_linkWhere = 1;
 
 			a.setAc_id(ac_id);
 			a.setAc_pw(ac_pw);
@@ -52,11 +53,12 @@ public class AccountDAO {
 			a.setAc_addr(ac_addr);
 			a.setAc_email(ac_email);
 			a.setAc_pic(ac_pic);
+			a.setAc_linkWhere(ac_linkWhere);
 
 			if (ss.getMapper(AccountMapper.class).regAccount(a) == 1) {
-				req.setAttribute("result", "가입성공");
+				System.out.println("가입 성공");
 			} else {
-				req.setAttribute("result", "가입실패");
+				System.out.println("가입 실패");
 			}
 
 		} catch (Exception e) {
@@ -71,7 +73,7 @@ public class AccountDAO {
 		if (dbAccount != null) {
 			if (a.getAc_pw().equals(dbAccount.getAc_pw())) {
 				req.getSession().setAttribute("loginAccount", dbAccount);
-				req.getSession().setMaxInactiveInterval(60 * 10);
+				req.getSession().setMaxInactiveInterval(60 * 60);
 			} else {
 				req.setAttribute("result", "비밀번호 오류");
 			}
@@ -89,18 +91,18 @@ public class AccountDAO {
 		a.setAc_name(a.getAc_name());
 		a.setAc_email(a.getAc_email());
 		AccountDTO idSearch = ss.getMapper(AccountMapper.class).searchId(a);
-		
+
 		String getId = idSearch.getAc_id();
 		String result = getId;
-		
+
 		int length = result.length();
-		
+
 		String maskedId = "";
-		
-		for(int i = 0; i < length; i++) {
+
+		for (int i = 0; i < length; i++) {
 			maskedId = i < length / 2 ? maskedId + result.charAt(i) : maskedId + "*";
 		}
-			req.setAttribute("result", maskedId);		
+		req.setAttribute("result", maskedId);
 	}
 
 	public String emailCheckDo(String ac_email) {
@@ -121,7 +123,7 @@ public class AccountDAO {
 			helper.setSubject(title);
 			helper.setText(content);
 			mailSender.send(mes);
-			
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -130,11 +132,117 @@ public class AccountDAO {
 	}
 
 	public void changePwDo(HttpServletRequest req, AccountDTO a) {
-		// 비밀번호 변경해야 함
-		if(ss.getMapper(AccountMapper.class).changePwDo(a) == 1) {
+		if (ss.getMapper(AccountMapper.class).changePwDo(a) == 1) {
 			System.out.println("변경 완료");
 			req.getSession().setAttribute("loginAccount", ss.getMapper(AccountMapper.class).getAccountByID(a));
 		}
+	}
+
+	public int naverLogin(AccountDTO a) {
+		System.out.println(a.getAc_id());
+		return ss.getMapper(AccountMapper.class).checkIdNaver(a);
+	}
+
+	public void loginNaver(HttpServletRequest req, AccountDTO a) {
+		a.setAc_linkWhere(3);
+		AccountDTO dbMember = ss.getMapper(AccountMapper.class).getAccountByID(a);
+
+		if (dbMember != null) {
+			System.out.println("로그인 성공");
+			req.getSession().setAttribute("loginAccount", dbMember);
+			req.getSession().setMaxInactiveInterval(60 * 60);
+		} else {
+			System.out.println("로그인 실패");
+		}
+
+	}
+
+	public void naverJoin(HttpServletRequest req, AccountDTO a) {
+		try {
+			req.setCharacterEncoding("utf-8");
+
+			String ac_id = req.getParameter("ac_id");
+			String ac_name = req.getParameter("ac_name");
+			String ac_email = req.getParameter("ac_email");
+			String ac_pic = req.getParameter("ac_pic");
+
+			String ac_addr = " ";
+			String ac_pw = " ";
+			int ac_linkWhere = 3;
+
+			a.setAc_id(ac_id);
+			a.setAc_name(ac_name);
+			a.setAc_email(ac_email);
+			a.setAc_pic(ac_pic);
+
+			a.setAc_addr(ac_addr);
+			a.setAc_pw(ac_pw);
+			a.setAc_linkWhere(ac_linkWhere);
+
+			if (ss.getMapper(AccountMapper.class).regAccount(a) == 1) {
+				System.out.println("회원 가입 성공");
+			} else {
+				System.out.println("회원 가입 실패");
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+	}
+
+	public int kakaoLogin(String ac_email, String ac_name, String ac_pic, HttpServletRequest req, AccountDTO a) {
+			a.setAc_id(ac_email);
+
+		int result = ss.getMapper(AccountMapper.class).checkIdKakao(a);
+
+		if (result == 0) {
+			if (ac_email == null) {
+				ac_name = " ";
+			}
+			if (ac_pic == null) {
+				ac_pic = " ";
+			}
+			a.setAc_pw(" ");
+			a.setAc_name(ac_name);
+			a.setAc_addr(" ");
+			a.setAc_email(ac_email);
+			a.setAc_pic(ac_pic);
+			a.setAc_linkWhere(2);
+
+			int join = ss.getMapper(AccountMapper.class).join(a);
+
+			if (join == 1) {
+				System.out.println("회원가입 성공");
+
+				AccountDTO dbMember = ss.getMapper(AccountMapper.class).getAccountByID(a);
+
+				if (dbMember != null) { 
+					req.getSession().setAttribute("loginAccount", dbMember);
+					req.getSession().setMaxInactiveInterval(60 * 60);
+				} else {
+					System.out.println("실패");
+				}
+
+			} else {
+				System.out.println("회원가입 실패");
+			}
+
+		} else {
+
+			a.setAc_linkWhere(2);
+			AccountDTO dbMember = ss.getMapper(AccountMapper.class).getAccountByID(a);
+
+			if (dbMember != null) {
+				req.getSession().setAttribute("loginAccount", dbMember);
+				req.getSession().setMaxInactiveInterval(60 * 60);
+			} else {
+				System.out.println("실패");
+			}
+
+		}
+		
+		return result;
 	}
 
 }

@@ -46,10 +46,11 @@ pageEncoding="UTF-8"%>
 
     <!--=============== [JS MEMBER]===============-->
     <script src="resources/js/home/nav.js"></script>
-    <script src="resources/js/account/check.js"></script>
-    <script src="resources/js/account/go.js"></script>
-    <script src="resources/js/account/naverLogin.js"></script>
+    <script src="resources/js/account/account_check.js"></script>
+    <script src="resources/js/account/account_go.js"></script>
+    <script src="resources/js/account/kakaoLogin.js"></script>
     <script src="resources/js/mypage/go.js"></script>
+    
     <!-- ---------------------------------------------------------------------------- -->
   </head>
 
