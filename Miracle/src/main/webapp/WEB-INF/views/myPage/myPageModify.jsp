@@ -15,9 +15,9 @@
 	NAME: <input name="ac_name" value="${sessionScope.loginAccount.ac_name }">  <br>
 	ADDR: <input name="ac_addr" value="${sessionScope.loginAccount.ac_addr }">  <br>
 	EMAIL: <input name="ac_email" value="${sessionScope.loginAccount.ac_email }">  <br>
-	PIC : <img src="resources/files/${sessionScope.loginAccount.ac_pic }">
+	IMG : <img src="resources/files/${sessionScope.loginAccount.ac_pic }">
 	 	  <input type="file" name="ac_newpic"> <br>
-	<button>수정하기</button>
+	<button onclick="modi();">수정하기</button>
 	<button onclick="bye();" type="button">탈퇴하기</button>
 
 </form>
