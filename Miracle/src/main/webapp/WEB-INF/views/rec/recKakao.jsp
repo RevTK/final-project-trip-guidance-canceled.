@@ -6,23 +6,97 @@
 <meta charset="utf-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="resources/css/map.css">
+</head>
+<body>
+	<hr>
+	<br>
+	<br>
+	<br>
+	<br>
+	<hr>
+	<div class="map_wrap">
+		<div id="map"
+			style="width: 55%; height: 100%; position: relative; overflow: hidden;"></div>
+		<div id="menu_wrap" class="bg_white">
+			<div class="option">
+				<div>
+					<form onsubmit="searchPlaces(); return false;">
+						<!-- 키워드 : <input type="text" placeholder="검색" id="keyword" size="15"> -->
+						<select  id="keyword" name="trip_place">
+   								 <option value="">여행지선택</option>
+   								 <option value="서울">서울</option>
+  							     <option value="부산">부산</option>
+ 							     <option value="대구">대구</option>
+ 							     <option value="인천">인천</option>
+ 							     <option value="광주">광주</option>
+ 							     <option value="대전">대전</option>
+ 							     <option value="울산">울산</option>
+ 							     <option value="세종">세종</option>
+ 							     <option value="춘천">춘천</option>
+ 							     <option value="청주">청주</option>
+ 							     <option value="전주">전주</option>
+ 							     <option value="안동">안동</option>
+ 							     <option value="포항">포항</option>
+ 							     <option value="창원">창원</option>
+ 							     <option value="진주">진주</option>
+ 							     <option value="제주">제주</option>
+						</select>
+						<button type="submit" id="searchBtnId" class="searchBtn" value="">검색하기</button>
+					</form>
+				</div>
+			</div>
+			<hr>
+			<ul id="placesList"></ul>
+			<div id="pagination"></div>
+		</div>
+	</div>
+	<div>
+	<button class="searchBtn" value="12">관광지</button>
+	<button class="searchBtn" value="14">문화시설</button>
+	<button class="searchBtn" value="15">행사/공연/축제</button>
+	<button class="searchBtn" value="25">여행코스</button>
+	<button class="searchBtn" value="28">레포츠</button>
+	<button class="searchBtn" value="32">숙박</button>
+	<button class="searchBtn" value="38">쇼핑</button>
+	<button class="searchBtn" value="39">음식점</button>
+	</div>
+	<div style="display:flex;align-content: space-around;justify-content: center;">
+	<div id="my_div"></div>
+	<div id="my_div2"></div>
+	</div>
+	
 <script type="text/javascript">
 	$(function() {
 		
-		$("#searchBtn").click(function() {
+		$(".searchBtn").click(function() {
 		
 		// 관광지 검색 결과 지우기
 		$("#my_div2").empty();
 		
-		// 관광지 api	
+		// 관광지 api	키
+		let serviceKey = "PsWL%2Ftf5nGQd3uPozFQ6nKgfpXL7p9PmrJ3TiHOWQV%2BSLHFuhy2QwtTdqpY8NvMrcO4vly6SLSFOAD7TadOn9g%3D%3D";
 		
 			// 키워드 인코딩
 		let keyword = encodeURIComponent($("#keyword").val());
 		
+		// 관광정보 타입 {관광지(12),문화시설(14),행사/공연/축제(15),여행코스(25),레포츠(28),숙박(32),쇼핑(38),음식점(39)}
+		let contentTypeId = 12;
+		contentTypeId = $(this).val();
+		// console.log(contentTypeId);
+		
+		// 관광정보 타입 서치에 심어주기
+		$('#searchBtnId').val(contentTypeId);
+		
+		// 읽기 순서(배열)
+		// let arrange = "readcount";
+		let arrange = "P";
+		
 		// console.log(keyword);
-		let keywordUrl = "http://apis.data.go.kr/B551011/KorService/searchKeyword?serviceKey=PsWL%2Ftf5nGQd3uPozFQ6nKgfpXL7p9PmrJ3TiHOWQV%2BSLHFuhy2QwtTdqpY8NvMrcO4vly6SLSFOAD7TadOn9g%3D%3D&numOfRows=10&pageNo=1&MobileOS=ETC&MobileApp=TestApp&_type=json&keyword=" + keyword + "&arrange=readcount";
+		let keywordUrl = "http://apis.data.go.kr/B551011/KorService/searchKeyword?serviceKey=" + serviceKey + "&numOfRows=10&pageNo=1&MobileOS=ETC&MobileApp=TestApp&_type=json&keyword=" + keyword + "&ContentTypeId=" + contentTypeId + "&arrange=" + arrange;
 		// 지역코드 url
 		// let areaCodeUrl = "https://apis.data.go.kr/B551011/KorService/areaCode?serviceKey=PsWL%2Ftf5nGQd3uPozFQ6nKgfpXL7p9PmrJ3TiHOWQV%2BSLHFuhy2QwtTdqpY8NvMrcO4vly6SLSFOAD7TadOn9g%3D%3D&numOfRows=10&pageNo=1&MobileOS=ETC&MobileApp=AppTest&areaCode=1&_type=json";
+		// 숙박 정보
+		
 		$.ajax(
 				{
 					url : keywordUrl,
@@ -40,7 +114,7 @@
 			// 관광지 검색 결과 div에 뿌려줌
 			const element = document.getElementById('my_div2');
 				$.each(ar, function(i, obj) {
-					element.innerHTML += '<div class="my_divChild">' + obj.title + '</div>'  /* + '<img style="width:400px;height:400px;" src="' + obj.firstimage + '">' */ ;
+					element.innerHTML += '<div class="my_divChild">' + obj.title + '</div>'   + '<img style="width:100px;height:50px;" src="' + obj.firstimage + '">'  ;
 					// console.log(obj.title);
 				});
 					// console.log(element);
@@ -53,36 +127,6 @@
 	});
 });
 </script>
-</head>
-<body>
-	<hr>
-	<br>
-	<br>
-	<br>
-	<br>
-	<hr>
-	<div class="map_wrap">
-		<div id="map"
-			style="width: 55%; height: 100%; position: relative; overflow: hidden;"></div>
-		<div id="menu_wrap" class="bg_white">
-			<div class="option">
-				<div>
-					<form onsubmit="searchPlaces(); return false;">
-						키워드 : <input type="text" placeholder="검색" id="keyword" size="15">
-						<button type="submit" id="searchBtn">검색하기</button>
-					</form>
-				</div>
-			</div>
-			<hr>
-			<ul id="placesList"></ul>
-			<div id="pagination"></div>
-		</div>
-	</div>
-	<div style="display:flex;align-content: space-around;justify-content: center;">
-	<div id="my_div"></div>
-	<div id="my_div2"></div>
-	</div>
-
 
 	<script type="text/javascript"
 		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=1950a2b56dd3863d5c5f75c779612745&libraries=services"></script>
@@ -117,7 +161,7 @@
 			var keyword = document.getElementById('keyword').value;
 
 			if (!keyword.replace(/^\s+|\s+$/g, '')) {
-				alert('키워드를 입력해주세요!');
+				alert('여행지를 선택해주세요!');
 				return false;
 			}
 
