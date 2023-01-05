@@ -34,7 +34,7 @@ public class AccountDAO {
 	}
 
 	public void accountRegDo(AccountDTO a, HttpServletRequest req) {
-		String path = req.getSession().getServletContext().getRealPath("resources/files");
+		String path = req.getSession().getServletContext().getRealPath("resources/files/account");
 		MultipartRequest mr = null;
 		try {
 			mr = new MultipartRequest(req, path, 10 * 1024 * 1024, "utf-8", new DefaultFileRenamePolicy());
