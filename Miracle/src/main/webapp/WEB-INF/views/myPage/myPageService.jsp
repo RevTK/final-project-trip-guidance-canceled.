@@ -6,6 +6,12 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 <body>
 	<h2>고객센터</h2>
 	<button onclick="bye();" type="button">탈퇴문의</button>
