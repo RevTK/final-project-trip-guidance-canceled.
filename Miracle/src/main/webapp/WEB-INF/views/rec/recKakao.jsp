@@ -252,6 +252,7 @@
 			map.setBounds(bounds);
 		}
 		
+		// 카카오 코스 html에 보여주기
 		function selectCose(places) {
 			$("#my_div").empty();
 			const element = document.getElementById('my_div');
