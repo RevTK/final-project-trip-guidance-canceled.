@@ -11,11 +11,11 @@
         <!--==================== HOME ====================-->
         <section class="home section" id="home">
             <div class="home__container container grid">
-                <img src="resources/img/home/home-main.png" alt="home image" class="home__img">
+                <img src="resources/files/home/home-main.png" alt="home image" class="home__img">
                 <div class="home__data">
                     <h1 class="home__title">
                         Enjoy Travel
-                        <div> <img src="resources/img/home/home-title.png" alt="home image">나의 여행</div>
+                        <div> <img src="resources/files/home/home-title.png" alt="home image">나의 여행</div>
                     </h1>
                     <p class="home__description">
                         Enjoy a good trip with the best guide in Our website and improve your life.
@@ -27,8 +27,8 @@
                 </div>
             </div>
 
-            <img src="resources/img/home/leaf-branch-2.png" alt="home image" class="home__leaf-1">
-            <img src="resources/img/home/leaf-branch-4.png" alt="home image" class="home__leaf-2">
+            <img src="resources/files/home/leaf-branch-2.png" alt="home image" class="home__leaf-1">
+            <img src="resources/files/home/leaf-branch-4.png" alt="home image" class="home__leaf-2">
         </section>
 
 
@@ -40,7 +40,7 @@
                     <h2 class="section__title about__title">
                         <div>
                             최적의 1인여행을
-                            <img src="resources/img/home/about-title.png" alt="about image">
+                            <img src="resources/files/home/about-title.png" alt="about image">
                         </div>
                         도와드리립니다
                     </h2>
@@ -51,9 +51,9 @@
                     </p>
                 </div>
 
-                <img src="resources/img/home/about-main.png" alt="about image" class="about__img">
+                <img src="resources/files/home/about-main.png" alt="about image" class="about__img">
             </div>
-            <img src="resources/img/home/leaf-branch-1.png" alt="about image" class="about__leaf">
+            <img src="resources/files/home/leaf-branch-1.png" alt="about image" class="about__leaf">
         </section>
 
 
@@ -65,7 +65,7 @@
             <div class="popular__container container grid">
 
                 <article class="popular__card">
-                    <img src="resources/img/home/popular-review1.png" alt="popular image" class="popular__img">
+                    <img src="resources/files/home/popular-review1.png" alt="popular image" class="popular__img">
                     <h3 class="popular__name">Tokyo Trip</h3>
                     <span class="popular__description">임형규님의 하루</span>
                     <span class="popular__price">$10.09</span>
@@ -75,7 +75,7 @@
                 </article>
 
                 <article class="popular__card">
-                    <img src="resources/img/home/popular-review2.png" alt="popular image" class="popular__img">
+                    <img src="resources/files/home/popular-review2.png" alt="popular image" class="popular__img">
                     <h3 class="popular__name">Osaka Trip</h3>
                     <span class="popular__description">송준우님의 하루</span>
                     <span class="popular__price">$9.69</span>
@@ -85,7 +85,7 @@
                 </article>
 
                 <article class="popular__card">
-                    <img src="resources/img/home/popular-review3.png" alt="popular image" class="popular__img">
+                    <img src="resources/files/home/popular-review3.png" alt="popular image" class="popular__img">
                     <h3 class="popular__name">Kyoto Trip</h3>
                     <span class="popular__description">정권님의 하루</span>
                     <span class="popular__price">$12.31</span>
@@ -115,14 +115,14 @@
                         보러가기<i class="ri-arrow-right-line"></i>
                     </a>
 
-                    <img src="resources/img/home/spinach-leaf.png" alt="recently image" class="recently__data-img">
+                    <img src="resources/files/home/spinach-leaf.png" alt="recently image" class="recently__data-img">
                 </div>
 
-                <img src="resources/img/home/recently-new_pic.png" alt="recently image" class="recently__img">
+                <img src="resources/files/home/recently-new_pic.png" alt="recently image" class="recently__img">
             </div>
 
-            <img src="resources/img/home/leaf-branch-2.png" alt="recently image" class="recently__leaf-1">
-            <img src="resources/img/home/leaf-branch-3.png" alt="recently image" class="recently__leaf-2">
+            <img src="resources/files/home/leaf-branch-2.png" alt="recently image" class="recently__leaf-1">
+            <img src="resources/files/home/leaf-branch-3.png" alt="recently image" class="recently__leaf-2">
         </section>
 
 
@@ -130,7 +130,7 @@
         <section class="newsletter section">
             <div class="newsletter__container container">
                 <div class="newsletter__content grid">
-                    <img src="resources/img/home/newsletter-sushi.png" alt="newsletter image" class="newsletter__img">
+                    <img src="resources/files/home/newsletter-sushi.png" alt="newsletter image" class="newsletter__img">
 
                     <div class="newsletter__data">
                         <span class="section__subtitle">Newsletter</span>
@@ -148,7 +148,7 @@
                     </div>
                 </div>
 
-                <img src="resources/img/home/spinach-leaf.png" alt="newsletter image" class="newsletter__spinach">
+                <img src="resources/files/home/spinach-leaf.png" alt="newsletter image" class="newsletter__spinach">
             </div>
         </section>
     </main>

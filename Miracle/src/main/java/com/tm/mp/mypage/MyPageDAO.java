@@ -23,7 +23,7 @@ public class MyPageDAO {
 
 	public void myPageUpdate(HttpServletRequest req) {
 		
-		String path = req.getSession().getServletContext().getRealPath("resources/files");
+		String path = req.getSession().getServletContext().getRealPath("resources/files/account");
 		MultipartRequest mr = null;
 		
 		AccountDTO loginMember = (AccountDTO) req.getSession().getAttribute("loginAccount");
@@ -95,7 +95,7 @@ public class MyPageDAO {
 			if (ss.getMapper(MyPageMapper.class).myPageDelete(a) == 1) {
 				req.setAttribute("result", "탈퇴 성공");
 				
-				String path = req.getSession().getServletContext().getRealPath("resources/files");
+				String path = req.getSession().getServletContext().getRealPath("resources/files/account");
 				String ac_newpic = a.getAc_pic();
 				ac_newpic = URLDecoder.decode(ac_newpic, "utf-8");
 				new File(path + "/" + ac_newpic).delete();

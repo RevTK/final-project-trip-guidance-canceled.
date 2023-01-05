@@ -8,12 +8,9 @@
 </head>
 <body>
 	<div id="loginSuccessArea">
-		<div class="welcome">
-			<div>${sessionScope.loginAccount.ac_name }님 어서오세요</div>
-		</div>
 		<div class="info-area">
 			<div class="info-area">
-				<button onclick="goMyPage()">마이페이지</button>
+				<button onclick="goMyPage()"> ${sessionScope.loginAccount.ac_name }의 마이페이지</button>
 				<button onclick="logout()">로그아웃</button>
 			</div>
 		</div>
