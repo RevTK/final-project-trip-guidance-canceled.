@@ -68,6 +68,13 @@ public class HomeController {
 		req.setAttribute("contentPage", "admin/admin.jsp");
 		return "index";
 	}
+	
+	@RequestMapping(value = "/news.main.go", method = RequestMethod.GET)
+	public String newsMainGo(HttpServletRequest req) {
+		aDAO.loginCheck(req);
+		req.setAttribute("contentPage", "news/newsMain.jsp");
+		return "index";
+	}
 
 	// --디자인2---------------------------------------------------------
 

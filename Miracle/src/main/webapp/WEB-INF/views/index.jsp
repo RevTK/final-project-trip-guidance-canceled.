@@ -65,6 +65,8 @@
 					<li><a href="community.main.go" class="nav__link">커뮤니티</a></li>
 					<li class="nav__item"><a href="myPage.main.go"
 						class="nav__link">뉴스</a></li>
+					<li class="nav__item"><a href="news.main.go"
+						class="nav__link">real뉴스</a></li>
 					<c:if test="${sessionScope.loginAccount.ac_id eq 'qwe'}">
 						<li class="nav__item"><a href="admin.main.go"
 							class="nav__link">관리자모드</a></li>
