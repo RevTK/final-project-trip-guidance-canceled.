@@ -77,9 +77,15 @@ public class MyPageController {
 		return "index";
 	}
 	
-	
-	
-	
+	@RequestMapping(value = "/myPage.service.go", method = RequestMethod.GET)
+	public String myPageServiceGo(HttpServletRequest req) {
+		
+		aDAO.loginCheck(req);
+		
+		req.setAttribute("contentPage", "myPage/myPageService.jsp");
+		
+		return "index";
+	}
 	
 	
 	

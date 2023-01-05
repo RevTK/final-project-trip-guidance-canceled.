@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,12 +7,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<a>커뮤니티 2페이지</a>
+	<h2>고객센터</h2>
+	<button onclick="bye();" type="button">탈퇴문의</button>
+	<button type="button">고객문의</button>
 </body>
 </html>

@@ -27,17 +27,17 @@ public class HomeController {
 		return home(req);
 	}
 
-	@RequestMapping(value = "/review.go", method = RequestMethod.GET)
-	public String reviewGo(HttpServletRequest req) {
+	@RequestMapping(value = "/review.main.go", method = RequestMethod.GET)
+	public String reviewMainGo(HttpServletRequest req) {
 		aDAO.loginCheck(req);
-		req.setAttribute("contentPage", "review/reviewPage.jsp");
+		req.setAttribute("contentPage", "review/reviewMain.jsp");
 		return "index";
 	}
 	
-	@RequestMapping(value = "/community.go", method = RequestMethod.GET)
-	public String communityGo(HttpServletRequest req) {
+	@RequestMapping(value = "/community.main.go", method = RequestMethod.GET)
+	public String communityMainGo(HttpServletRequest req) {
 		aDAO.loginCheck(req);
-		req.setAttribute("contentPage", "community/communityPage.jsp");
+		req.setAttribute("contentPage", "community/communityMain.jsp");
 		return "index";
 	}
 	
@@ -48,34 +48,6 @@ public class HomeController {
 		return "index";
 	}
 	
-	@RequestMapping(value = "/communityone.go", method = RequestMethod.GET)
-	public String communityOneGo(HttpServletRequest req) {
-		aDAO.loginCheck(req);
-		req.setAttribute("contentPage", "community/communityOnePage.jsp");
-		return "index";
-	}
-	
-	@RequestMapping(value = "/communitytwo.go", method = RequestMethod.GET)
-	public String communityTwoGo(HttpServletRequest req) {
-		aDAO.loginCheck(req);
-		req.setAttribute("contentPage", "community/communityTwoPage.jsp");
-		return "index";
-	}
-	
-	@RequestMapping(value = "/communitythree.go", method = RequestMethod.GET)
-	public String communityThreeGo(HttpServletRequest req) {
-		aDAO.loginCheck(req);
-		req.setAttribute("contentPage", "community/communityThreePage.jsp");
-		return "index";
-	}
-	
-	@RequestMapping(value = "/rec.main.go", method = RequestMethod.GET)
-	public String recMainGo(HttpServletRequest req) {
-		aDAO.loginCheck(req);
-		req.setAttribute("contentPage", "rec/recMain.jsp");
-		return "index";
-	}
-	
 	@RequestMapping(value = "/rec.kakao.go", method = RequestMethod.GET)
 	public String recKakaoGo(HttpServletRequest req) {
 		aDAO.loginCheck(req);
@@ -83,8 +55,6 @@ public class HomeController {
 		return "index";
 	}
 	
-	
-
 	@RequestMapping(value = "/myPage.main.go", method = RequestMethod.GET)
 	public String myPageMainGo(HttpServletRequest req) {
 		aDAO.loginCheck(req);
@@ -93,7 +63,7 @@ public class HomeController {
 	}
 
 	@RequestMapping(value = "/admin.main.go", method = RequestMethod.GET)
-	public String eventMainGo(HttpServletRequest req) {
+	public String adminMainGo(HttpServletRequest req) {
 		aDAO.loginCheck(req);
 		req.setAttribute("contentPage", "admin/admin.jsp");
 		return "index";
@@ -115,27 +85,6 @@ public class HomeController {
 		return "index2";
 	}
 
-	@RequestMapping(value = "/rec2.main.go", method = RequestMethod.GET)
-	public String recMainGo2(HttpServletRequest req) {
-		aDAO.loginCheck(req);
-		req.setAttribute("contentPage", "rec/recMain.jsp");
-		return "index2";
-	}
-
-	@RequestMapping(value = "/myPage2.main.go", method = RequestMethod.GET)
-	public String myPageMainGo2(HttpServletRequest req) {
-		aDAO.loginCheck(req);
-		req.setAttribute("contentPage", "myPage/myPageMain.jsp");
-		return "index2";
-	}
-
-	@RequestMapping(value = "/event2.main.go", method = RequestMethod.GET)
-	public String eventMainGo2(HttpServletRequest req) {
-		aDAO.loginCheck(req);
-		req.setAttribute("contentPage", "event/eventMain.jsp");
-		return "index2";
-	}
-
 	// --디자인3---------------------------------------------------------
 
 	@RequestMapping(value = "/index3.go", method = RequestMethod.GET)
@@ -152,27 +101,7 @@ public class HomeController {
 		return "index3";
 	}
 
-	@RequestMapping(value = "/rec3.main.go", method = RequestMethod.GET)
-	public String recMainGo3(HttpServletRequest req) {
-		aDAO.loginCheck(req);
-		req.setAttribute("contentPage", "rec/recMain.jsp");
-		return "index3";
-	}
-
-	@RequestMapping(value = "/myPage3.main.go", method = RequestMethod.GET)
-	public String myPageMainGo3(HttpServletRequest req) {
-		aDAO.loginCheck(req);
-		req.setAttribute("contentPage", "myPage/myPageMain.jsp");
-		return "index3";
-	}
-
-	@RequestMapping(value = "/event3.main.go", method = RequestMethod.GET)
-	public String eventMainGo3(HttpServletRequest req) {
-		aDAO.loginCheck(req);
-		req.setAttribute("contentPage", "event/eventMain.jsp");
-		return "index3";
-	}
-
+	
 	// --디자인3---------------------------------------------------------
 
 	@RequestMapping(value = "/index4.go", method = RequestMethod.GET)
@@ -186,27 +115,6 @@ public class HomeController {
 	public String accountLoginGo4(HttpServletRequest req) {
 		aDAO.loginCheck(req);
 		req.setAttribute("contentPage", "account/loginPage.jsp");
-		return "index4";
-	}
-
-	@RequestMapping(value = "/rec4.main.go", method = RequestMethod.GET)
-	public String recMainGo4(HttpServletRequest req) {
-		aDAO.loginCheck(req);
-		req.setAttribute("contentPage", "rec/recMain.jsp");
-		return "index4";
-	}
-
-	@RequestMapping(value = "/myPage4.main.go", method = RequestMethod.GET)
-	public String myPageMainGo4(HttpServletRequest req) {
-		aDAO.loginCheck(req);
-		req.setAttribute("contentPage", "myPage/myPageMain.jsp");
-		return "index4";
-	}
-
-	@RequestMapping(value = "/event4.main.go", method = RequestMethod.GET)
-	public String eventMainGo4(HttpServletRequest req) {
-		aDAO.loginCheck(req);
-		req.setAttribute("contentPage", "event/eventMain.jsp");
 		return "index4";
 	}
 

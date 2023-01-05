@@ -18,8 +18,6 @@
 	IMG : <img src="resources/files/${sessionScope.loginAccount.ac_pic }">
 	 	  <input type="file" name="ac_newpic"> <br>
 	<button onclick="modi();">수정하기</button>
-	<button onclick="bye();" type="button">탈퇴하기</button>
-
 </form>
 
 
