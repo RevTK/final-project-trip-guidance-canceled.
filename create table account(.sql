@@ -11,7 +11,6 @@ create table account(
 insert into account values('test','1234','테스트','서울특별시 종로구 종로1 종로1가','test@gmail.com','a.jpg','1')
 
 select * from account;
-delete from account where ac_id="frvlv6";
 drop table account cascade constraint purge;
 
 create table review_board(

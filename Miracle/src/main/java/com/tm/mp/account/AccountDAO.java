@@ -190,59 +190,57 @@ public class AccountDAO {
 		}
 
 	}
+	
+	public int kakaoLogin(AccountDTO a) {
+		System.out.println(a.getAc_id());
+		return ss.getMapper(AccountMapper.class).checkIdKakao(a);
+	}
 
-	public int kakaoLogin(String ac_email, String ac_name, String ac_pic, HttpServletRequest req, AccountDTO a) {
-			a.setAc_id(ac_email);
+	public void loginKakao(HttpServletRequest req, AccountDTO a) {
+		a.setAc_linkWhere(2);
+		AccountDTO dbMember = ss.getMapper(AccountMapper.class).getAccountByID(a);
 
-		int result = ss.getMapper(AccountMapper.class).checkIdKakao(a);
+		if (dbMember != null) {
+			System.out.println("로그인 성공");
+			req.getSession().setAttribute("loginAccount", dbMember);
+			req.getSession().setMaxInactiveInterval(60 * 60);
+		} else {
+			System.out.println("로그인 실패");
+		}
 
-		if (result == 0) {
-			if (ac_email == null) {
-				ac_name = " ";
-			}
-			if (ac_pic == null) {
-				ac_pic = " ";
-			}
-			a.setAc_pw(" ");
+	}
+
+	public void kakaoJoin(HttpServletRequest req, AccountDTO a) {
+		try {
+			req.setCharacterEncoding("utf-8");
+			
+			String ac_id = req.getParameter("ac_id");
+			String ac_name = req.getParameter("ac_name");
+			String ac_pic = req.getParameter("ac_pic");
+			
+			String ac_email = " ";
+			String ac_addr = " ";
+			String ac_pw = " ";
+			int ac_linkWhere = 2;
+
+			a.setAc_id(ac_id);
 			a.setAc_name(ac_name);
-			a.setAc_addr(" ");
 			a.setAc_email(ac_email);
 			a.setAc_pic(ac_pic);
-			a.setAc_linkWhere(2);
 
-			int join = ss.getMapper(AccountMapper.class).join(a);
+			a.setAc_addr(ac_addr);
+			a.setAc_pw(ac_pw);
+			a.setAc_linkWhere(ac_linkWhere);
 
-			if (join == 1) {
-				System.out.println("회원가입 성공");
-
-				AccountDTO dbMember = ss.getMapper(AccountMapper.class).getAccountByID(a);
-
-				if (dbMember != null) { 
-					req.getSession().setAttribute("loginAccount", dbMember);
-					req.getSession().setMaxInactiveInterval(60 * 60);
-				} else {
-					System.out.println("실패");
-				}
-
+			if (ss.getMapper(AccountMapper.class).regAccount(a) == 1) {
+				System.out.println("회원 가입 성공");
 			} else {
-				System.out.println("회원가입 실패");
+				System.out.println("회원 가입 실패");
 			}
 
-		} else {
-
-			a.setAc_linkWhere(2);
-			AccountDTO dbMember = ss.getMapper(AccountMapper.class).getAccountByID(a);
-
-			if (dbMember != null) {
-				req.getSession().setAttribute("loginAccount", dbMember);
-				req.getSession().setMaxInactiveInterval(60 * 60);
-			} else {
-				System.out.println("실패");
-			}
-
+		}catch (Exception e) {
+			e.printStackTrace();
 		}
-		
-		return result;
 	}
 
 }

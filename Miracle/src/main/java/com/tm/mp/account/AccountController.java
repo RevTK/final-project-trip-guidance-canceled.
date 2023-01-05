@@ -62,7 +62,7 @@ public class AccountController {
 	}
 
 	@RequestMapping(value = "/naverLogin.do", method = RequestMethod.GET)
-	public String naverloginDo(HttpServletRequest req, AccountDTO a) {
+	public String naverLoginDo(HttpServletRequest req, AccountDTO a) {
 		if (req.getParameter("ac_id") != null) {
 			aDAO.loginNaver(req, a);
 			aDAO.loginCheck(req);
@@ -75,7 +75,7 @@ public class AccountController {
 	}
 
 	@RequestMapping(value = "/naverJoin.go", method = RequestMethod.GET)
-	public String naverjoingo(HttpServletRequest req, AccountDTO a) {
+	public String naverJoinGo(HttpServletRequest req, AccountDTO a) {
 		aDAO.naverJoin(req, a);
 		a.setAc_linkWhere(3);
 		aDAO.accountLoginDo(a, req);
@@ -85,14 +85,35 @@ public class AccountController {
 		return "index";
 	}
 
-	@RequestMapping(value = "/kakaoLogin.check", method = RequestMethod.GET, produces = "application/json; charset=utf8")
+	@RequestMapping(value = "/kakaoLogin.check", method = RequestMethod.GET)
 	@ResponseBody
-	public int kakaoLoginCheck(@RequestParam("ac_name") String ac_name, @RequestParam("ac_email") String ac_email,
-			@RequestParam("ac_pic") String ac_pic, HttpServletRequest req,
-			AccountDTO a) throws ParseException {
-		int kakaoLogin = aDAO.kakaoLogin(ac_name, ac_email, ac_pic, req, a);
+	public int kakaoLoginCheck(HttpServletRequest req, AccountDTO a) {
 		aDAO.loginCheck(req);
-		return kakaoLogin;
+		return aDAO.kakaoLogin(a);
+	}
+
+	@RequestMapping(value = "/kakaoLogin.do", method = RequestMethod.GET)
+	public String kakaoLoginDo(HttpServletRequest req, AccountDTO a) {
+		if (req.getParameter("ac_id") != null) {
+			aDAO.loginKakao(req, a);
+			aDAO.loginCheck(req);
+		} else {
+			System.out.println("로그인 실패");
+		}
+		req.setAttribute("contentPage", "home.jsp");
+
+		return "index";
+	}
+
+	@RequestMapping(value = "/kakaoJoin.go", method = RequestMethod.GET)
+	public String KakaoJoinGo(HttpServletRequest req, AccountDTO a) {
+		aDAO.kakaoJoin(req, a);
+		a.setAc_linkWhere(2);
+		aDAO.accountLoginDo(a, req);
+		aDAO.loginCheck(req);
+		req.setAttribute("contentPage", "home.jsp");
+
+		return "index";
 	}
 
 	@RequestMapping(value = "/search.id.go", method = RequestMethod.GET)

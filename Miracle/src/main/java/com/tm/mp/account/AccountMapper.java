@@ -14,6 +14,4 @@ public interface AccountMapper {
 
 	int checkIdKakao(AccountDTO a);
 
-	int join(AccountDTO a);
-
 }
