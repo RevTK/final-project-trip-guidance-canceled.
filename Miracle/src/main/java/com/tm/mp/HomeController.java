@@ -27,13 +27,48 @@ public class HomeController {
 		return home(req);
 	}
 
+	@RequestMapping(value = "/review.go", method = RequestMethod.GET)
+	public String reviewGo(HttpServletRequest req) {
+		aDAO.loginCheck(req);
+		req.setAttribute("contentPage", "review/reviewPage.jsp");
+		return "index";
+	}
+	
+	@RequestMapping(value = "/community.go", method = RequestMethod.GET)
+	public String communityGo(HttpServletRequest req) {
+		aDAO.loginCheck(req);
+		req.setAttribute("contentPage", "community/communityPage.jsp");
+		return "index";
+	}
+	
 	@RequestMapping(value = "/account.login.go", method = RequestMethod.GET)
 	public String accountLoginGo(HttpServletRequest req) {
 		aDAO.loginCheck(req);
 		req.setAttribute("contentPage", "account/loginPage.jsp");
 		return "index";
 	}
-
+	
+	@RequestMapping(value = "/communityone.go", method = RequestMethod.GET)
+	public String communityOneGo(HttpServletRequest req) {
+		aDAO.loginCheck(req);
+		req.setAttribute("contentPage", "community/communityOnePage.jsp");
+		return "index";
+	}
+	
+	@RequestMapping(value = "/communitytwo.go", method = RequestMethod.GET)
+	public String communityTwoGo(HttpServletRequest req) {
+		aDAO.loginCheck(req);
+		req.setAttribute("contentPage", "community/communityTwoPage.jsp");
+		return "index";
+	}
+	
+	@RequestMapping(value = "/communitythree.go", method = RequestMethod.GET)
+	public String communityThreeGo(HttpServletRequest req) {
+		aDAO.loginCheck(req);
+		req.setAttribute("contentPage", "community/communityThreePage.jsp");
+		return "index";
+	}
+	
 	@RequestMapping(value = "/rec.main.go", method = RequestMethod.GET)
 	public String recMainGo(HttpServletRequest req) {
 		aDAO.loginCheck(req);

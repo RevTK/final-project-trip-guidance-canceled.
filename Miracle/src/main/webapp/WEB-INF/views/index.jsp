@@ -42,12 +42,16 @@ pageEncoding="UTF-8"%>
     <!--=============== [CSS MEMBER]===============-->
     <link rel="stylesheet" href="resources/css/index.css" />
     <link rel="stylesheet" href="resources/css/account/account.css" />
+    <link rel="stylesheet" href="resources/css/review/review.css" />
+    <link rel="stylesheet" href="resources/css/commnunity/commnunity.css" />
     <link rel="stylesheet" href="resources/css/event/eventMain.css" />
-
+	
     <!--=============== [JS MEMBER]===============-->
     <script src="resources/js/home/nav.js"></script>
     <script src="resources/js/account/account_check.js"></script>
     <script src="resources/js/account/account_go.js"></script>
+    <script src="resources/js/review/review_go.js"></script>
+    <script src="resources/js/community/community_go.js"></script>
     <script src="resources/js/account/kakaoLogin.js"></script>
     <script src="resources/js/mypage/go.js"></script>
     
@@ -77,13 +81,19 @@ pageEncoding="UTF-8"%>
               <!-- rec5.main.go -->
             </li>
             <li class="nav__item">
-              <a href="#" class="nav__link">트립리뷰</a>
+              <a style="cursor: pointer" onclick="reviewGo()" class="nav__link">트립리뷰</a>
               <!-- event5.main.go -->
             </li>
             <li class="nav__item">
-              <a href="#" class="nav__link">커뮤니티</a>
+              <li id="community">
+              <a style="cursor: pointer" onclick="communityGo()" class="nav__link">커뮤니티</a>
+              <ul class="community_menu">
+              <li style="cursor: pointer" onclick="commnunity_one_go()">잡담</li>
+              <li style="cursor: pointer" onclick="commnunity_two_go()">Q&amp;A</li>
+              <li style="cursor: pointer" onclick="commnunity_three_go()">꿀팁</li>
+              </ul>
+              </li>
               <!-- myPage5.main.go -->
-            </li>
             <li class="nav__item">
               <a href="myPage.main.go" class="nav__link">뉴스</a>
               <!-- myPage5.main.go -->

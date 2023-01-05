@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,6 +7,12 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<a href="account.login.go">로그인</a>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<a>커뮤니티 2페이지</a>
 </body>
 </html>
