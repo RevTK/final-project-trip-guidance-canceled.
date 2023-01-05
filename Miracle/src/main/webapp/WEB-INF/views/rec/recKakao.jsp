@@ -54,7 +54,7 @@
 	<button class="searchBtn" value="12">관광지</button>
 	<button class="searchBtn" value="14">문화시설</button>
 	<button class="searchBtn" value="15">행사/공연/축제</button>
-	<button class="searchBtn" value="25">여행코스</button>
+	<!-- <button class="searchBtn" value="25">여행코스</button> -->
 	<button class="searchBtn" value="28">레포츠</button>
 	<button class="searchBtn" value="32">숙박</button>
 	<button class="searchBtn" value="38">쇼핑</button>
