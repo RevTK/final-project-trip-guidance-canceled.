@@ -85,7 +85,7 @@ public class AccountController {
 		return "index";
 	}
 
-	@RequestMapping(value = "/kakaoLogin.check", method = RequestMethod.POST, produces = "application/json; charset=utf8")
+	@RequestMapping(value = "/kakaoLogin.check", method = RequestMethod.GET, produces = "application/json; charset=utf8")
 	@ResponseBody
 	public int kakaoLoginCheck(@RequestParam("ac_name") String ac_name, @RequestParam("ac_email") String ac_email,
 			@RequestParam("ac_pic") String ac_pic, HttpServletRequest req,
