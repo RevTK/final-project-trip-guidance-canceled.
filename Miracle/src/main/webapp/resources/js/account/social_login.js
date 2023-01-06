@@ -42,15 +42,9 @@ function checkInfo(ac_id, ac_name, ac_pic) {
 		url : "kakaoLogin.check",
 		type : "GET",
 		dataType :"text",
-		data : {"ac_id" : ac_id,
-				"ac_name" : ac_name,
-				"ac_pic" : ac_pic
-		},
+		data : {"ac_id" : ac_id},
 		success : function(data) {
 			console.log(data)
-			console.log(ac_id)
-			console.log(ac_name)
-			console.log(ac_pic)
 			if (data >= 1) {
 				let kakaoLoginUrl = `kakaoLogin.do?ac_id=${ac_id}`;
 				console.log(kakaoLoginUrl);
@@ -68,3 +62,30 @@ function checkInfo(ac_id, ac_name, ac_pic) {
 		}
 	});
 }
+
+function checkInfo(ac_id, ac_name, ac_pic, ac_email) { 
+    $.ajax({
+		url:"googleLogin.check",
+		type:"GET",
+		dataType :"text",
+		data:{"ac_id":ac_id},
+		success: function(getData) {
+			console.log(getData);
+			if (getData >=1) {
+				let googleLoginUrl = `googleLogin.do?ac_id=${ac_id}`;
+				console.log(googleLoginUrl);
+				location.replace(googleLoginUrl);
+		}else {
+				alert('회원가입을 도와드리겠습니다.');
+				let googleJoinUrl = `googleJoin.go?ac_id=+${ac_id}+&ac_name=+${ac_name}+&ac_pic=+${ac_pic}+&ac_email=+${ac_email}`;
+				console.log(googleJoinUrl);
+				location.replace(googleJoinUrl);
+			}
+			
+		},
+		error : function(request,status,error) {
+			console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+			
+		}
+	});
+ }
