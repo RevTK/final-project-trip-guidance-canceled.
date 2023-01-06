@@ -8,7 +8,3 @@ function logout() {
 function goMyPage() {
 		location.href='myPage.main.go';
 }
-
-function goNaverLogin(){
-		location.href="naver.login.go";
-}

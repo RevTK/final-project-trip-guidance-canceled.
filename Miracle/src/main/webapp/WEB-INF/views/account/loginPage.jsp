@@ -4,9 +4,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta name="google-signin-client_id" content="567208941336-p92o44c3gigs2a282rhro3p6vni5fetb.apps.googleusercontent.com">
 <title>Insert title here</title>
 <script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js" charset="utf-8"></script>
 <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+<script src="https://apis.google.com/js/platform.js" async defer></script>
 <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -35,9 +37,12 @@
 			<br>
 			<div id="SNS-login-area">
 				<a onclick="kakaoLogin()">
-  				<img src="https://www.myro.co.kr/myro_image/kakaolink_btn.png" width="40" alt="카카오 로그인 버튼" /></a>
+  				<img src="https://www.myro.co.kr/myro_image/kakaolink_btn.png" width="40"/></a>
 				<div id="naver_id_login"></div>
-				<img style="height:40px; cursor:pointer" src="https://www.myro.co.kr/myro_image/google_btn.png">
+				<div class="g-signin2" data-onsuccess="onSignIn">
+				<a href="googleLogin.go">
+				<img src="https://www.myro.co.kr/myro_image/google_btn.png" width="40"></a>
+				</div>
 		</div>
 		</form>
 		</div>
@@ -50,6 +55,15 @@
 		naver_id_login.setState(state);
 		naver_id_login.setPopup();
 		naver_id_login.init_naver_id_login();
-</script>
+		</script>
+		<script>
+		function onSignIn(googleUser) {
+			  var profile = googleUser.getBasicProfile();
+			  console.log('ID: ' + profile.getId());
+			  console.log('Name: ' + profile.getName());
+			  console.log('Image URL: ' + profile.getImageUrl());
+			  console.log('Email: ' + profile.getEmail());
+			}
+		</script>
 </body>
 </html>

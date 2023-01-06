@@ -42,15 +42,9 @@ function checkInfo(ac_id, ac_name, ac_pic) {
 		url : "kakaoLogin.check",
 		type : "GET",
 		dataType :"text",
-		data : {"ac_id" : ac_id,
-				"ac_name" : ac_name,
-				"ac_pic" : ac_pic
-		},
+		data : {"ac_id" : ac_id},
 		success : function(data) {
 			console.log(data)
-			console.log(ac_id)
-			console.log(ac_name)
-			console.log(ac_pic)
 			if (data >= 1) {
 				let kakaoLoginUrl = `kakaoLogin.do?ac_id=${ac_id}`;
 				console.log(kakaoLoginUrl);

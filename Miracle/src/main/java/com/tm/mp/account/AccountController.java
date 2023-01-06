@@ -6,9 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import java.text.ParseException;
 
 @Controller
 public class AccountController {
@@ -115,7 +113,14 @@ public class AccountController {
 
 		return "index";
 	}
-
+	
+	@RequestMapping(value = "/googleLogin.go", method = RequestMethod.GET)
+	public String googleLoginGo(AccountDTO a, HttpServletRequest req) {
+		aDAO.loginCheck(req);
+		req.setAttribute("contentPage", "account/googleLogin.jsp");
+		return "index";
+	}
+	
 	@RequestMapping(value = "/search.id.go", method = RequestMethod.GET)
 	public String searchIdGo(HttpServletRequest req) {
 		aDAO.loginCheck(req);
