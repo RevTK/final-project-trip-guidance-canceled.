@@ -27,10 +27,10 @@ public class HomeController {
 		return home(req);
 	}
 
-	@RequestMapping(value = "/review.main.go", method = RequestMethod.GET)
+	@RequestMapping(value = "/share.main.go", method = RequestMethod.GET)
 	public String reviewMainGo(HttpServletRequest req) {
 		aDAO.loginCheck(req);
-		req.setAttribute("contentPage", "review/reviewMain.jsp");
+		req.setAttribute("contentPage", "share/shareMain.jsp");
 		return "index";
 	}
 	
