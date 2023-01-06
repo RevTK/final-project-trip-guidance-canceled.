@@ -21,25 +21,36 @@
 			<div class="option">
 				<div>
 					<form onsubmit="searchPlaces(); return false;">
+						<div>
+							<button type="button" class="searchBtn" value="12">관광지</button>
+							<button type="button" class="searchBtn" value="14">문화시설</button>
+							<button type="button" class="searchBtn" value="15">행사/공연/축제</button>
+							<!-- <button type="button" class="searchBtn" value="25">여행코스</button> -->
+							<button type="button" class="searchBtn" value="28">레포츠</button>
+							<!-- <button type="button" class="searchBtn" value="32">숙박</button> -->
+							<button type="button" class="searchBtn" value="38">쇼핑</button>
+							<button type="button" class="searchBtn" value="39">음식점</button>
+						</div>
 						<!-- 키워드 : <input type="text" placeholder="검색" id="keyword" size="15"> -->
-						<select  id="keyword" name="trip_place">
-   								 <option value="">여행지선택</option>
-   								 <option value="서울">서울</option>
-  							     <option value="부산">부산</option>
- 							     <option value="대구">대구</option>
- 							     <option value="인천">인천</option>
- 							     <option value="광주">광주</option>
- 							     <option value="대전">대전</option>
- 							     <option value="울산">울산</option>
- 							     <option value="세종">세종</option>
- 							     <option value="춘천">춘천</option>
- 							     <option value="청주">청주</option>
- 							     <option value="전주">전주</option>
- 							     <option value="안동">안동</option>
- 							     <option value="포항">포항</option>
- 							     <option value="창원">창원</option>
- 							     <option value="진주">진주</option>
- 							     <option value="제주">제주</option>
+						<select id="keyword" name="trip_place">
+							<option value="">여행지선택</option>
+							<option value="서울">서울</option>
+							<option value="부산">부산</option>
+							<option value="대구">대구</option>
+							<option value="인천">인천</option>
+							<option value="광주">광주</option>
+							<option value="대전">대전</option>
+							<option value="울산">울산</option>
+							<option value="세종">세종</option>
+							<option value="춘천">춘천</option>
+							<option value="청주">청주</option>
+							<option value="전주">전주</option>
+							<option value="안동">안동</option>
+							<option value="포항">포항</option>
+							<option value="창원">창원</option>
+							<option value="진주">진주</option>
+							<option value="여수">여수</option>
+							<option value="제주">제주</option>
 						</select>
 						<button type="submit" id="searchBtnId" class="searchBtn" value="">검색하기</button>
 					</form>
@@ -50,22 +61,13 @@
 			<div id="pagination"></div>
 		</div>
 	</div>
-	<div>
-	<button class="searchBtn" value="12">관광지</button>
-	<button class="searchBtn" value="14">문화시설</button>
-	<button class="searchBtn" value="15">행사/공연/축제</button>
-	<button class="searchBtn" value="25">여행코스</button>
-	<button class="searchBtn" value="28">레포츠</button>
-	<button class="searchBtn" value="32">숙박</button>
-	<button class="searchBtn" value="38">쇼핑</button>
-	<button class="searchBtn" value="39">음식점</button>
+	<div
+		style="display: flex; align-content: space-around; justify-content: center;">
+		<div id="my_div"></div>
+		<div id="my_div2"></div>
 	</div>
-	<div style="display:flex;align-content: space-around;justify-content: center;">
-	<div id="my_div"></div>
-	<div id="my_div2"></div>
-	</div>
-	
-<script type="text/javascript">
+
+	<script type="text/javascript">
 	$(function() {
 		
 		$(".searchBtn").click(function() {
@@ -78,7 +80,10 @@
 		
 			// 키워드 인코딩
 		let keyword = encodeURIComponent($("#keyword").val());
-		
+		if (!keyword.replace(/^\s+|\s+$/g, '')) {
+			alert('여행지를 선택해주세요!');
+			return false;
+		}
 		// 관광정보 타입 {관광지(12),문화시설(14),행사/공연/축제(15),여행코스(25),레포츠(28),숙박(32),쇼핑(38),음식점(39)}
 		let contentTypeId = 12;
 		contentTypeId = $(this).val();
@@ -107,9 +112,11 @@
 
 					}
 				}).done(function(msg) {
-			// console.log(msg);
-			// console.log(msg.response.body.items.item);			
-			let ar = msg.response.body.items.item;
+			 console.log(msg);
+			 //console.log(msg.response.body.items.item);	
+				callback(msg);
+				kanPlace(msg);
+			 /* let ar = msg.response.body.items.item;
 			
 			// 관광지 검색 결과 div에 뿌려줌
 			const element = document.getElementById('my_div2');
@@ -117,20 +124,21 @@
 					element.innerHTML += '<div class="my_divChild">' + obj.title + '</div>'   + '<img style="width:100px;height:50px;" src="' + obj.firstimage + '">'  ;
 					// console.log(obj.title);
 				});
-					// console.log(element);
-				
-
+					// console.log(element);  */
 				
 		});
 				
 		
 	});
 });
+	
 </script>
 
 	<script type="text/javascript"
 		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=1950a2b56dd3863d5c5f75c779612745&libraries=services"></script>
 	<script>
+	
+		
 		// 마커를 담을 배열입니다
 		var markers = [];
 
@@ -140,7 +148,7 @@
 			level : 6
 		// 지도의 확대 레벨
 		};
-
+		console.log(kakao);
 		// 지도를 생성합니다    
 		var map = new kakao.maps.Map(mapContainer, mapOption);
 
@@ -252,6 +260,7 @@
 			map.setBounds(bounds);
 		}
 		
+		// 카카오 코스 html에 보여주기
 		function selectCose(places) {
 			$("#my_div").empty();
 			const element = document.getElementById('my_div');
@@ -264,7 +273,7 @@
 
 		// 검색결과 항목을 Element로 반환하는 함수입니다
 		function getListItem(index, places) {
-			// console.log(places);
+			 console.log(places);
 			
 			
 			var el = document.createElement('li'), itemStr = '<span class="markerbg marker_'
@@ -288,6 +297,19 @@
 			el.className = 'item';
 
 			return el;
+		}
+		
+		// 관광공사 뿌려주기
+		function callback(msg) {
+			let ar = msg.response.body.items.item;
+			
+			// 관광지 검색 결과 div에 뿌려줌
+			const element = document.getElementById('my_div2');
+				$.each(ar, function(i, obj) {
+					element.innerHTML += '<div class="my_divChild">' + obj.title + '</div>'   + '<img style="width:100px;height:50px;" src="' + obj.firstimage + '">'  ;
+					// console.log(obj.title);
+				});
+					// console.log(element); 
 		}
 		
 
