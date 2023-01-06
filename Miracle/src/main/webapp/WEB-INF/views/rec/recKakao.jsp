@@ -21,25 +21,35 @@
 			<div class="option">
 				<div>
 					<form onsubmit="searchPlaces(); return false;">
+						<div>
+							<button type="button" class="searchBtn" value="12">관광지</button>
+							<button type="button" class="searchBtn" value="14">문화시설</button>
+							<button type="button" class="searchBtn" value="15">행사/공연/축제</button>
+							<!-- <button type="button" class="searchBtn" value="25">여행코스</button> -->
+							<button type="button" class="searchBtn" value="28">레포츠</button>
+							<!-- <button type="button" class="searchBtn" value="32">숙박</button> -->
+							<button type="button" class="searchBtn" value="38">쇼핑</button>
+							<button type="button" class="searchBtn" value="39">음식점</button>
+						</div>
 						<!-- 키워드 : <input type="text" placeholder="검색" id="keyword" size="15"> -->
-						<select  id="keyword" name="trip_place">
-   								 <option value="">여행지선택</option>
-   								 <option value="서울">서울</option>
-  							     <option value="부산">부산</option>
- 							     <option value="대구">대구</option>
- 							     <option value="인천">인천</option>
- 							     <option value="광주">광주</option>
- 							     <option value="대전">대전</option>
- 							     <option value="울산">울산</option>
- 							     <option value="세종">세종</option>
- 							     <option value="춘천">춘천</option>
- 							     <option value="청주">청주</option>
- 							     <option value="전주">전주</option>
- 							     <option value="안동">안동</option>
- 							     <option value="포항">포항</option>
- 							     <option value="창원">창원</option>
- 							     <option value="진주">진주</option>
- 							     <option value="제주">제주</option>
+						<select id="keyword" name="trip_place">
+							<option value="">여행지선택</option>
+							<option value="서울">서울</option>
+							<option value="부산">부산</option>
+							<option value="대구">대구</option>
+							<option value="인천">인천</option>
+							<option value="광주">광주</option>
+							<option value="대전">대전</option>
+							<option value="울산">울산</option>
+							<option value="세종">세종</option>
+							<option value="춘천">춘천</option>
+							<option value="청주">청주</option>
+							<option value="전주">전주</option>
+							<option value="안동">안동</option>
+							<option value="포항">포항</option>
+							<option value="창원">창원</option>
+							<option value="진주">진주</option>
+							<option value="제주">제주</option>
 						</select>
 						<button type="submit" id="searchBtnId" class="searchBtn" value="">검색하기</button>
 					</form>
@@ -50,22 +60,13 @@
 			<div id="pagination"></div>
 		</div>
 	</div>
-	<div>
-	<button class="searchBtn" value="12">관광지</button>
-	<button class="searchBtn" value="14">문화시설</button>
-	<button class="searchBtn" value="15">행사/공연/축제</button>
-	<!-- <button class="searchBtn" value="25">여행코스</button> -->
-	<button class="searchBtn" value="28">레포츠</button>
-	<button class="searchBtn" value="32">숙박</button>
-	<button class="searchBtn" value="38">쇼핑</button>
-	<button class="searchBtn" value="39">음식점</button>
+	<div
+		style="display: flex; align-content: space-around; justify-content: center;">
+		<div id="my_div"></div>
+		<div id="my_div2"></div>
 	</div>
-	<div style="display:flex;align-content: space-around;justify-content: center;">
-	<div id="my_div"></div>
-	<div id="my_div2"></div>
-	</div>
-	
-<script type="text/javascript">
+
+	<script type="text/javascript">
 	$(function() {
 		
 		$(".searchBtn").click(function() {
@@ -108,7 +109,7 @@
 					}
 				}).done(function(msg) {
 			// console.log(msg);
-			// console.log(msg.response.body.items.item);			
+			 console.log(msg.response.body.items.item);			
 			let ar = msg.response.body.items.item;
 			
 			// 관광지 검색 결과 div에 뿌려줌
@@ -265,7 +266,7 @@
 
 		// 검색결과 항목을 Element로 반환하는 함수입니다
 		function getListItem(index, places) {
-			// console.log(places);
+			 console.log(places);
 			
 			
 			var el = document.createElement('li'), itemStr = '<span class="markerbg marker_'
