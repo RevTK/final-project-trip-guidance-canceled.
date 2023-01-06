@@ -39,7 +39,6 @@
 <link rel="stylesheet" href="resources/css/commnunity/commnunity.css" />
 
 <!--=============== [JS MEMBER]===============-->
-<script src="resources/js/home/nav.js"></script>
 <script src="resources/js/account/account_check.js"></script>
 <script src="resources/js/account/account_go.js"></script>
 <script src="resources/js/account/kakaoLogin.js"></script>
@@ -60,7 +59,7 @@
 				<ul class="nav__list">
 					<li class="nav__item"><a href="rec.kakao.go" class="nav__link">코스</a>
 					</li>
-					<li class="nav__item"><a href="review.main.go"
+					<li class="nav__item"><a href="share.main.go"
 						class="nav__link">트립리뷰</a></li>
 					<li><a href="community.main.go" class="nav__link">커뮤니티</a></li>
 					<li class="nav__item"><a href="myPage.main.go"
@@ -78,9 +77,9 @@
 					<i class="ri-close-line"></i>
 				</div>
 
-				<img src="resources/img/home/leaf-branch-4.png" alt="nav image"
+				<img src="resources/files/home/leaf-branch-4.png" alt="nav image"
 					class="nav__img-1" /> <img
-					src="resources/img/home/leaf-branch-3.png" alt="nav image"
+					src="resources/files/home/leaf-branch-3.png" alt="nav image"
 					class="nav__img-2" />
 			</div>
 
@@ -103,7 +102,7 @@
 		<div class="footer__container container grid">
 			<div>
 				<a href="#" class="footer__logo"> <img
-					src="resources/img/home/logo.png" alt="logo image" /> Travel
+					src="resources/files/home/logo.png" alt="logo image" /> Travel
 				</a>
 
 				<p class="footer__description">
@@ -157,20 +156,20 @@
 				</div>
 			</div>
 
-			<img src="resources/img/home/spring-onion.png" alt="footer image"
+			<img src="resources/files/home/spring-onion.png" alt="footer image"
 				class="footer__onion" /> <img
-				src="resources/img/home/spinach-leaf.png" alt="footer image"
+				src="resources/files/home/spinach-leaf.png" alt="footer image"
 				class="footer__spinach" /> <img
-				src="resources/img/home/leaf-branch-4.png" alt="footer image"
+				src="resources/files/home/leaf-branch-4.png" alt="footer image"
 				class="footer__leaf" />
 		</div>
 
 		<div class="footer__info container">
 			<div class="footer__card">
-				<img src="resources/img/home/footer-card-1.png" alt="footer image" />
-				<img src="resources/img/home/footer-card-2.png" alt="footer image" />
-				<img src="resources/img/home/footer-card-3.png" alt="footer image" />
-				<img src="resources/img/home/footer-card-4.png" alt="footer image" />
+				<img src="resources/files/home/footer-card-1.png" alt="footer image" />
+				<img src="resources/files/home/footer-card-2.png" alt="footer image" />
+				<img src="resources/files/home/footer-card-3.png" alt="footer image" />
+				<img src="resources/files/home/footer-card-4.png" alt="footer image" />
 			</div>
 
 			<span class="footer__copy"> &#169; Cpoyright TeamMiracle. All
