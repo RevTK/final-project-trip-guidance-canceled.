@@ -14,4 +14,6 @@ public interface AccountMapper {
 
 	int checkIdKakao(AccountDTO a);
 
+	int checkIdGoogle(AccountDTO a);
+
 }
