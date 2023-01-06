@@ -37,6 +37,7 @@
 <link rel="stylesheet" href="resources/css/account/account.css" />
 <link rel="stylesheet" href="resources/css/review/review.css" />
 <link rel="stylesheet" href="resources/css/commnunity/commnunity.css" />
+<link rel="stylesheet" href="resources/css/news/news.css" />
 
 <!--=============== [JS MEMBER]===============-->
 <script src="resources/js/home/nav.js"></script>
@@ -44,6 +45,7 @@
 <script src="resources/js/account/account_go.js"></script>
 <script src="resources/js/account/kakaoLogin.js"></script>
 <script src="resources/js/myPage/myPage.js"></script>
+<script src="resources/js/news/paging.js"></script>
 
 <!-- ---------------------------------------------------------------------------- -->
 </head>

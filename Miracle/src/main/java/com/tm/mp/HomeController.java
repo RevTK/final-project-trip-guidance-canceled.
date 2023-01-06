@@ -2,18 +2,24 @@ package com.tm.mp;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.tm.mp.account.AccountDAO;
+import com.tm.mp.news.NewsDAO;
 
 @Controller
 public class HomeController {
 
 	@Autowired
 	private AccountDAO aDAO;
+	
+	@Autowired
+	private NewsDAO nDAO;
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(HttpServletRequest req) {
@@ -72,8 +78,15 @@ public class HomeController {
 	@RequestMapping(value = "/news.main.go", method = RequestMethod.GET)
 	public String newsMainGo(HttpServletRequest req) {
 		aDAO.loginCheck(req);
+		
 		req.setAttribute("contentPage", "news/newsMain.jsp");
 		return "index";
+	}
+
+	@RequestMapping(value = "/get.news", method = RequestMethod.GET, produces="application/json; charset=utf-8")
+	public @ResponseBody JSONObject getNews(HttpServletRequest req) {
+		aDAO.loginCheck(req);
+		return nDAO.getNews(req);
 	}
 
 	// --디자인2---------------------------------------------------------

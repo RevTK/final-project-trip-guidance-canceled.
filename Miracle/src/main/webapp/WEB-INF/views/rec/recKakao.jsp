@@ -49,6 +49,7 @@
 							<option value="포항">포항</option>
 							<option value="창원">창원</option>
 							<option value="진주">진주</option>
+							<option value="여수">여수</option>
 							<option value="제주">제주</option>
 						</select>
 						<button type="submit" id="searchBtnId" class="searchBtn" value="">검색하기</button>
@@ -79,7 +80,10 @@
 		
 			// 키워드 인코딩
 		let keyword = encodeURIComponent($("#keyword").val());
-		
+		if (!keyword.replace(/^\s+|\s+$/g, '')) {
+			alert('여행지를 선택해주세요!');
+			return false;
+		}
 		// 관광정보 타입 {관광지(12),문화시설(14),행사/공연/축제(15),여행코스(25),레포츠(28),숙박(32),쇼핑(38),음식점(39)}
 		let contentTypeId = 12;
 		contentTypeId = $(this).val();
@@ -108,9 +112,11 @@
 
 					}
 				}).done(function(msg) {
-			// console.log(msg);
-			 console.log(msg.response.body.items.item);			
-			let ar = msg.response.body.items.item;
+			 console.log(msg);
+			 //console.log(msg.response.body.items.item);	
+				callback(msg);
+				kanPlace(msg);
+			 /* let ar = msg.response.body.items.item;
 			
 			// 관광지 검색 결과 div에 뿌려줌
 			const element = document.getElementById('my_div2');
@@ -118,20 +124,21 @@
 					element.innerHTML += '<div class="my_divChild">' + obj.title + '</div>'   + '<img style="width:100px;height:50px;" src="' + obj.firstimage + '">'  ;
 					// console.log(obj.title);
 				});
-					// console.log(element);
-				
-
+					// console.log(element);  */
 				
 		});
 				
 		
 	});
 });
+	
 </script>
 
 	<script type="text/javascript"
 		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=1950a2b56dd3863d5c5f75c779612745&libraries=services"></script>
 	<script>
+	
+		
 		// 마커를 담을 배열입니다
 		var markers = [];
 
@@ -141,7 +148,7 @@
 			level : 6
 		// 지도의 확대 레벨
 		};
-
+		console.log(kakao);
 		// 지도를 생성합니다    
 		var map = new kakao.maps.Map(mapContainer, mapOption);
 
@@ -290,6 +297,19 @@
 			el.className = 'item';
 
 			return el;
+		}
+		
+		// 관광공사 뿌려주기
+		function callback(msg) {
+			let ar = msg.response.body.items.item;
+			
+			// 관광지 검색 결과 div에 뿌려줌
+			const element = document.getElementById('my_div2');
+				$.each(ar, function(i, obj) {
+					element.innerHTML += '<div class="my_divChild">' + obj.title + '</div>'   + '<img style="width:100px;height:50px;" src="' + obj.firstimage + '">'  ;
+					// console.log(obj.title);
+				});
+					// console.log(element); 
 		}
 		
 
