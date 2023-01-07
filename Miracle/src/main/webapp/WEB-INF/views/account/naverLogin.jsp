@@ -27,7 +27,7 @@ function naverSignInCallback() {
  	let ac_pic = naver_id_login.getProfileData('profileImage');
  	
  	$.ajax({
-		url:"naverlogin.check",
+		url:"naverLogin.check",
 		type:"GET",
 		dataType :"text",
 		data:{"ac_id":ac_id},

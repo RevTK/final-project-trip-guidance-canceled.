@@ -1,5 +1,6 @@
 package com.tm.mp.account;
 
+import java.io.UnsupportedEncodingException;
 import java.util.Random;
 
 import javax.mail.internet.MimeMessage;
@@ -239,6 +240,57 @@ public class AccountDAO {
 			}
 
 		}catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	public int gooleLogin(AccountDTO a) {
+		System.out.println(a.getAc_id());
+		return ss.getMapper(AccountMapper.class).checkIdGoogle(a);
+	}
+
+	public void loginGoogle(HttpServletRequest req, AccountDTO a) {
+		a.setAc_linkWhere(4);
+		AccountDTO dbMember = ss.getMapper(AccountMapper.class).getAccountByID(a);
+
+		if (dbMember != null) {
+			System.out.println("로그인 성공");
+			req.getSession().setAttribute("loginAccount", dbMember);
+			req.getSession().setMaxInactiveInterval(60 * 60);
+		} else {
+			System.out.println("로그인 실패");
+		}
+	}
+
+	public void googleJoin(HttpServletRequest req, AccountDTO a) {
+		try {
+			req.setCharacterEncoding("utf-8");
+			
+			String ac_id = req.getParameter("ac_id");
+			String ac_name = req.getParameter("ac_name");
+			String ac_pic = req.getParameter("ac_pic");
+			
+			String ac_email = " ";
+			String ac_addr = " ";
+			String ac_pw = " ";
+			int ac_linkWhere = 4;
+
+			a.setAc_id(ac_id);
+			a.setAc_name(ac_name);
+			a.setAc_email(ac_email);
+			a.setAc_pic(ac_pic);
+
+			a.setAc_addr(ac_addr);
+			a.setAc_pw(ac_pw);
+			a.setAc_linkWhere(ac_linkWhere);
+
+			if (ss.getMapper(AccountMapper.class).regAccount(a) == 1) {
+				System.out.println("회원 가입 성공");
+			} else {
+				System.out.println("회원 가입 실패");
+			}
+			
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}

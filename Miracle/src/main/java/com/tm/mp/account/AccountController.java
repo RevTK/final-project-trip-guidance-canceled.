@@ -6,9 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import java.text.ParseException;
 
 @Controller
 public class AccountController {
@@ -54,7 +52,7 @@ public class AccountController {
 		return "index";
 	}
 
-	@RequestMapping(value = "/naverlogin.check", method = RequestMethod.GET)
+	@RequestMapping(value = "/naverLogin.check", method = RequestMethod.GET)
 	@ResponseBody
 	public int naverLoginCheck(HttpServletRequest req, AccountDTO a) {
 		aDAO.loginCheck(req);
@@ -115,7 +113,45 @@ public class AccountController {
 
 		return "index";
 	}
+	
+	@RequestMapping(value = "/googleLogin.go", method = RequestMethod.GET)
+	public String googleLoginGo(AccountDTO a, HttpServletRequest req) {
+		aDAO.loginCheck(req);
+		req.setAttribute("contentPage", "account/googleLogin.jsp");
+		return "index";
+	}
+	
+	@RequestMapping(value = "/googleLogin.check", method = RequestMethod.GET)
+	@ResponseBody
+	public int googleLoginCheck(HttpServletRequest req, AccountDTO a) {
+		aDAO.loginCheck(req);
+		return aDAO.gooleLogin(a);
+	}
 
+	@RequestMapping(value = "/googleLogin.do", method = RequestMethod.GET)
+	public String googleLoginDo(HttpServletRequest req, AccountDTO a) {
+		if (req.getParameter("ac_id") != null) {
+			aDAO.loginGoogle(req, a);
+			aDAO.loginCheck(req);
+		} else {
+			System.out.println("로그인 실패");
+		}
+		req.setAttribute("contentPage", "home.jsp");
+
+		return "index";
+	}
+
+	@RequestMapping(value = "/googleJoin.go", method = RequestMethod.GET)
+	public String googleJoinGo(HttpServletRequest req, AccountDTO a) {
+		aDAO.googleJoin(req, a);
+		a.setAc_linkWhere(4);
+		aDAO.accountLoginDo(a, req);
+		aDAO.loginCheck(req);
+		req.setAttribute("contentPage", "home.jsp");
+
+		return "index";
+	}
+	
 	@RequestMapping(value = "/search.id.go", method = RequestMethod.GET)
 	public String searchIdGo(HttpServletRequest req) {
 		aDAO.loginCheck(req);
@@ -159,5 +195,10 @@ public class AccountController {
 	public String emailCheckDo(HttpServletRequest req, String ac_email) {
 		aDAO.loginCheck(req);
 		return aDAO.emailCheckDo(ac_email);
+	}
+
+	@RequestMapping(value = "/google.done", method = RequestMethod.POST)
+	public String asdasd(HttpServletRequest req, String ac_email) {
+		return "account/googleLogin";
 	}
 }
