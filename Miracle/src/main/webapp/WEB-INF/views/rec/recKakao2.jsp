@@ -368,7 +368,7 @@
 
 	// 지도에 마커를 표출하는 함수입니다
 	function displayPlaces2(places) {
-
+		console.log(places);
 	    // 몇번째 카테고리가 선택되어 있는지 얻어옵니다
 	    // 이 순서는 스프라이트 이미지에서의 위치를 계산하는데 사용됩니다
 	    var order = document.getElementById(currCategory).getAttribute('data-order');
