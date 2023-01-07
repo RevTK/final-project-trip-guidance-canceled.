@@ -304,7 +304,7 @@ a
 
 		// 검색결과 항목을 Element로 반환하는 함수입니다
 		function getListItem(index, places) {
-			 console.log(places);
+			 // console.log(places);
 			
 			
 			var el = document.createElement('li'), itemStr = '<span class="markerbg marker_'
