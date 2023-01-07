@@ -6,6 +6,36 @@
 <meta charset="utf-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="resources/css/map.css">
+<style type="text/css">
+.searchBtn {
+  width: 40px;
+  height: 30px;
+  border: none;
+  border-radius: 3px;
+  margin: 12px;
+  cursor: pointer;
+  font-size: 10px;
+  background: #eaeaea4f;
+}
+
+.tripContainer {
+  margin: 10px;
+  padding: 10px;
+  background-color: #b5c1dc57;
+  border-radius: 8px;
+}
+
+
+.draggable.dragging {
+  opacity: 0.5;
+}
+</style>
+<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+<script type="text/javascript">
+$(function() {
+	$('.my_Child').draggable({ snap: true });
+});
+</script>
 </head>
 <body>
 	<hr>
@@ -56,6 +86,7 @@
 					</form>
 				</div>
 			</div>
+			
 			<hr>
 			<ul id="placesList"></ul>
 			<div id="pagination"></div>
@@ -64,7 +95,8 @@
 	<div
 		style="display: flex; align-content: space-around; justify-content: center;">
 		<div id="my_div"></div>
-		<div id="my_div2"></div>
+		<div id="TripContainer">
+  		</div>
 	</div>
 
 	<script type="text/javascript">
@@ -115,7 +147,6 @@
 			 console.log(msg);
 			 //console.log(msg.response.body.items.item);	
 				callback(msg);
-				kanPlace(msg);
 			 /* let ar = msg.response.body.items.item;
 			
 			// 관광지 검색 결과 div에 뿌려줌
@@ -159,7 +190,7 @@
 		var infowindow = new kakao.maps.InfoWindow({
 			zIndex : 1
 		});
-
+a
 		// 키워드로 장소를 검색합니다
 		//searchPlaces();
 
@@ -279,7 +310,7 @@
 			var el = document.createElement('li'), itemStr = '<span class="markerbg marker_'
 					+ (index + 1)
 					+ '"></span>'
-					+ '<div class="info">'
+					+ '<div id="info" class="info">'
 					+ '   <h5>' + places.place_name + '</h5>';
 
 			if (places.road_address_name) {
@@ -304,12 +335,12 @@
 			let ar = msg.response.body.items.item;
 			
 			// 관광지 검색 결과 div에 뿌려줌
-			const element = document.getElementById('my_div2');
+			const element = document.getElementById('TripContainer');
 				$.each(ar, function(i, obj) {
-					element.innerHTML += '<div class="my_divChild">' + obj.title + '</div>'   + '<img style="width:100px;height:50px;" src="' + obj.firstimage + '">'  ;
+					element.innerHTML += '<div class="draggable" draggable="true"><div>' + obj.title + '</div>'   + '<img style="width:100px;height:50px;" src="' + obj.firstimage + '"></div>'  ;
 					// console.log(obj.title);
 				});
-					// console.log(element); 
+					 console.log(element); 
 		}
 		
 
@@ -388,6 +419,35 @@
 				el.removeChild(el.lastChild);
 			}
 		}
+		
+		
+		
+		const draggables = document.querySelectorAll(".draggable");
+		const containers = document.querySelectorAll(".TripContainer");
+
+		draggables.forEach(draggable => {
+		  draggable.addEventListener("dragstart", () => {
+		    draggable.classList.add("dragging");
+		  });
+
+		  draggable.addEventListener("dragend", () => {
+		    draggable.classList.remove("dragging");
+		  });
+		});
+
+		containers.forEach(container => {
+		  container.addEventListener("dragover", e => {
+		    e.preventDefault();
+		    const afterElement = getDragAfterElement(container, e.clientX);
+		    const draggable = document.querySelector(".dragging");
+		    if (afterElement === undefined) {
+		      container.appendChild(draggable);
+		    } else {
+		      container.insertBefore(draggable, afterElement);
+		    }
+		  });
+		});
+		
 	</script>
 </body>
 </html>

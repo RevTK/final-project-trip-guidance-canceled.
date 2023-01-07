@@ -57,7 +57,7 @@ public class HomeController {
 	@RequestMapping(value = "/rec.kakao.go", method = RequestMethod.GET)
 	public String recKakaoGo(HttpServletRequest req) {
 		aDAO.loginCheck(req);
-		req.setAttribute("contentPage", "rec/recKakao.jsp");
+		req.setAttribute("contentPage", "rec/recKakao2.jsp");
 		return "index";
 	}
 	
