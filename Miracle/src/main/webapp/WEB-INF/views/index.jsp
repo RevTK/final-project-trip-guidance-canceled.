@@ -38,6 +38,7 @@
 <link rel="stylesheet" href="resources/css/review/review.css" />
 <link rel="stylesheet" href="resources/css/commnunity/commnunity.css" />
 <link rel="stylesheet" href="resources/css/news/news.css" />
+<link rel="stylesheet" href="resources/css/map/map.css" />
 
 <!--=============== [JS MEMBER]===============-->
 <script src="resources/js/account/account_check.js"></script>
